@@ -5,8 +5,10 @@
 #define Graphics_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QtOpenGL/QtOpenGL>
 
-class Graphics : public QWidget
+class Graphics : public QGLWidget
 {
    Q_OBJECT
 
@@ -15,14 +17,14 @@ public:
    ~Graphics();
 
 protected:
-   void initializeGL();
-   void paintGL();
-   void resizeGL(int w, int h);
+   //void initializeGL();
+   //void paintGL();
+   //void resizeGL(int w, int h);
 
-   void point();
+   //void point();
    void line();
-   void polygon(int n);
-   void cube();
+   //void polygon(int n);
+   //void cube();
 };
 
 #endif

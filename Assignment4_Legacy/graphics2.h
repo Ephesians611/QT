@@ -1,6 +1,6 @@
 // graphics2.h
 // Assignment I4
-// Farbod Hesaaraki
+
 
 #ifndef Graphics2_H
 #define Graphics2_H
