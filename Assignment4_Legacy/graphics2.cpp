@@ -7,7 +7,7 @@
 #include "graphics2.h"
 
 Graphics2::Graphics2(QWidget *parent)
-   : QGLWidget(parent)
+   : QWidget(parent)
 {
 }
 

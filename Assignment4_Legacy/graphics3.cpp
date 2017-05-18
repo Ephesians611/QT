@@ -7,7 +7,7 @@
 #include "graphics3.h"
 
 Graphics3::Graphics3(QWidget *parent)
-   : QGLWidget(parent)
+   : QWidget(parent)
 {
    v[0][0]=-0.9;
    v[0][1]=-0.9;

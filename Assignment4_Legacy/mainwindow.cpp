@@ -161,7 +161,7 @@ void MainWindow::createControls()
    comboBox->addItem("FM");
 
    // setting LCD for AM display (four digits and decimal).
-   LCDStation->setNumDigits(4);
+   LCDStation->setDigitCount(4);
    LCDStation->setMode(QLCDNumber::Dec);
 
    // set LCDs' segment style to Flat (solid black)

@@ -7,12 +7,22 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QComboBox>
+#include <QLCDNumber>
+#include <QDial>
+#include <QSpinBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QDockWidget>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QAction>
+#include <QMenuBar>
 
-class QAction;
-class QActionGroup;
-class QLabel;
-class QMenu;
-class QTextEdit;
 class Graphics;
 class Graphics2;
 class Graphics3;
