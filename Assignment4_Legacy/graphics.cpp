@@ -35,11 +35,11 @@ void Graphics::resizeGL(int w, int h)
 
 
 //   //setup the projection and switch to model view for transformations
-//   glMatrixMode(GL_PROJECTION);
-//   glLoadIdentity();
-//   glOrtho(-1, 1, -1, 1, -1, 1);
-//   glMatrixMode(GL_MODELVIEW);
-//   glLoadIdentity();
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glOrtho(-1, 1, -1, 1, -1, 1);
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
 
    //implicit call to paintGL after resized
 }
@@ -51,23 +51,23 @@ void Graphics::paintGL()
    f->glClear (GL_COLOR_BUFFER_BIT);
    f->glClear(GL_DEPTH_BUFFER_BIT);
 
-//   glLoadIdentity();
-//   glColor3f(0, 1, 0);
-//   glLineWidth(2);
-//   glTranslatef(-1, 0, 0);
-//   glRotatef(0, 0, 0, 1);
-//   signal();
+   glLoadIdentity();
+   glColor3f(0, 1, 0);
+   glLineWidth(2);
+   glTranslatef(-1, 0, 0);
+   glRotatef(0, 0, 0, 1);
+   signal();
 
    f->glFlush ();
 }
 
 //Function to draw the signal
 void Graphics::signal(){
-//   glBegin(GL_LINE_STRIP);
+   glBegin(GL_LINE_STRIP);
        for (float x = 0; x <= 5; x += 0.1){
-           //glVertex3f(0.5 * x, amplitude * sin(2 * 3.14 * frequency * x), 0);
+           glVertex3f(0.5 * x, amplitude * sin(2 * 3.14 * frequency * x), 0);
        }
-//   glEnd();
+   glEnd();
 }
 
 

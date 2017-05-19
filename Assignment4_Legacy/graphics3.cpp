@@ -67,9 +67,9 @@ void Graphics3::paintGL()
 void Graphics3::triangle( GLfloat *a, GLfloat *b, GLfloat *c)
 /* display one triangle */
 {
-/*   glVertex2fv(a);
+   glVertex2fv(a);
    glVertex2fv(b);
-   glVertex2fv(c)*/;
+   glVertex2fv(c);
 }
 
 void Graphics3::divide_triangle(GLfloat *a, GLfloat *b, GLfloat *c, int m)
