@@ -34,7 +34,7 @@ void Graphics3::initializeGL()
 {
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   //gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
    glMatrixMode(GL_MODELVIEW);
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
    glColor3f(1, 0.98, 0);
