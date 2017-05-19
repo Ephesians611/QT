@@ -7,7 +7,7 @@
 #include "graphics.h"
 
 Graphics::Graphics(QWidget *parent)
-   : QWidget(parent)
+   : QOpenGLWidget(parent)
 {
     frequency = 1;
     amplitude = 0.6;

@@ -5,12 +5,12 @@
 #ifndef Graphics3_H
 #define Graphics3_H
 
-#include <QtGui>
+#include <QOpenGLWidget>
 
 /* initial triangle */
 
 
-class Graphics3 : public QWidget
+class Graphics3 : public QOpenGLWidget
 {
    Q_OBJECT
 

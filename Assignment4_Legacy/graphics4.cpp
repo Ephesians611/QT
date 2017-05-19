@@ -7,7 +7,7 @@
 #include "graphics4.h"
 
 Graphics4::Graphics4(QWidget *parent)
-   : QWidget(parent)
+   : QOpenGLWidget(parent)
 {
    info << "0" << "0";
    numbers << "";
