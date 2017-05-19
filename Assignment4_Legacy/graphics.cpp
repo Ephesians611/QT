@@ -20,17 +20,19 @@ Graphics::~Graphics()
 //Initialize the GL settings
 void Graphics::initializeGL()
 {
-//   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-//   glClearDepth(1.0f);
-//   glEnable(GL_DEPTH_TEST);
-//   glDepthFunc(GL_LEQUAL);
+    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   f->glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+   //glClearDepth(1.0f);
+   f->glEnable(GL_DEPTH_TEST);
+   f->glDepthFunc(GL_LEQUAL);
 }
 
 //Set up the viewport based on the screen dimentions
 //Function is called implicitly by initializeGL and when screen is resized
 void Graphics::resizeGL(int w, int h)
 {
-//   glViewport(0, 0, w, h);
+    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+    f->glViewport(0, 0, w, h);
 
 
 //   //setup the projection and switch to model view for transformations
@@ -62,9 +64,9 @@ void Graphics::paintGL()
 //Function to draw the signal
 void Graphics::signal(){
 //   glBegin(GL_LINE_STRIP);
-//       for (float x = 0; x <= 5; x += 0.1){
-//           glVertex3f(0.5 * x, amplitude * sin(2 * 3.14 * frequency * x), 0);
-//       }
+       for (float x = 0; x <= 5; x += 0.1){
+           //glVertex3f(0.5 * x, amplitude * sin(2 * 3.14 * frequency * x), 0);
+       }
 //   glEnd();
 }
 

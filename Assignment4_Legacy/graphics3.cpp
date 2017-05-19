@@ -44,21 +44,23 @@ void Graphics3::initializeGL()
 //Function is called implicitly by initializeGL and when screen is resized
 void Graphics3::resizeGL(int w, int h)
 {
-   //glViewport(0, 0, w, h);
+   QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   f->glViewport(0, 0, w, h);
 }
 
 //Paints the GL scene
 void Graphics3::paintGL()
 {
-//   glClear(GL_COLOR_BUFFER_BIT);
-//   glClear(GL_DEPTH_BUFFER_BIT);
+   QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   f->glClear(GL_COLOR_BUFFER_BIT);
+   f->glClear(GL_DEPTH_BUFFER_BIT);
 
 //   glBegin(GL_TRIANGLES);
-////		glLoadIdentity();
+//		glLoadIdentity();
 //       glColor3f(double(qrand() % 100)/100, double(qrand() % 100)/100, double(qrand() % 100)/100);
-//       divide_triangle(v[0], v[1], v[2], n);
+       divide_triangle(v[0], v[1], v[2], n);
 //   glEnd();
-//   glFlush();
+   f->glFlush();
 
 }
 
