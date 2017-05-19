@@ -22,7 +22,7 @@ void Graphics4::initializeGL()
 {
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   //gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
    glMatrixMode(GL_MODELVIEW);
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }

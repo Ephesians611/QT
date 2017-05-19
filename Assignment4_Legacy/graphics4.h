@@ -6,7 +6,8 @@
 #define Graphics4_H
 
 #include <QGLWidget>
-
+#include <gl/GLU.h>
+#include <gl/GL.h>
 /* initial triangle */
 
 

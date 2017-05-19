@@ -6,6 +6,9 @@
 #define Graphics3_H
 
 #include <QGLWidget>
+#include <QtOpenGL>
+#include <gl/GLU.h>
+#include <gl/GL.h>
 
 /* initial triangle */
 
