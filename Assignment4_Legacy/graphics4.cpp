@@ -2,12 +2,12 @@
 // Assignment I4
 
 
-#include <QtGui>
+#include <QtOpenGL>
 #include <math.h>
 #include "graphics4.h"
 
 Graphics4::Graphics4(QWidget *parent)
-   : QOpenGLWidget(parent)
+   : QGLWidget(parent)
 {
    info << "0" << "0";
    numbers << "";
@@ -20,11 +20,11 @@ Graphics4::~Graphics4()
 //Initialize the GL settings
 void Graphics4::initializeGL()
 {
-//   glMatrixMode(GL_PROJECTION);
-//   glLoadIdentity();
-//   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
-//   glMatrixMode(GL_MODELVIEW);
-//   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   glMatrixMode(GL_MODELVIEW);
+   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 //Set up the viewport based on the screen dimentions
@@ -43,9 +43,9 @@ void Graphics4::paintGL()
    f->glClear(GL_DEPTH_BUFFER_BIT);
 
    // point
-//   glLoadIdentity();
-//   glColor3f(1, 0.98, 0);
-//   glPointSize(4);
+   glLoadIdentity();
+   glColor3f(1, 0.98, 0);
+   glPointSize(4);
 
    int n = info[0].toInt();
    if (n != 0)
@@ -53,7 +53,7 @@ void Graphics4::paintGL()
        GLfloat stepX = 1.6 / (n-1);
        GLfloat stepY = 1.5 / (info[1].toInt()-1);
 
-       //glTranslatef(0, 0.5, 0);
+       glTranslatef(0, 0.5, 0);
 
        for (int i = 0; i < n; i++)
        {
@@ -67,8 +67,8 @@ void Graphics4::paintGL()
 
 //Function to draw a single point
 void Graphics4::point(GLfloat x, GLfloat y){
-//   glBegin(GL_POINTS);
-//       glVertex3f(x, y, 0);
-//   glEnd();
+   glBegin(GL_POINTS);
+       glVertex3f(x, y, 0);
+   glEnd();
 }
 

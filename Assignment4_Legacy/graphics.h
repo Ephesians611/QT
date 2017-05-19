@@ -5,10 +5,9 @@
 #ifndef Graphics_H
 #define Graphics_H
 
-#include <QOpenGLWindow>
-#include <QOpenGLWidget>
+#include <QGLWidget>
 
-class Graphics : public QOpenGLWidget
+class Graphics : public QGLWidget
 {
    Q_OBJECT
 

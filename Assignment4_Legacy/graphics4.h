@@ -5,13 +5,12 @@
 #ifndef Graphics4_H
 #define Graphics4_H
 
-#include <QOpenGLWidget>
-#include <gl/GLU.h>
-#include <gl/GL.h>
+#include <QGLWidget>
+
 /* initial triangle */
 
 
-class Graphics4 : public QOpenGLWidget
+class Graphics4 : public QGLWidget
 {
    Q_OBJECT
 

@@ -2,12 +2,12 @@
 // Assignment I4
 
 
-#include <QtGui>
+#include <QtOpenGL>
 #include <math.h>
 #include "graphics3.h"
 
 Graphics3::Graphics3(QWidget *parent)
-   : QOpenGLWidget(parent)
+   : QGLWidget(parent)
 {
    v[0][0]=-0.9;
    v[0][1]=-0.9;
@@ -32,12 +32,12 @@ Graphics3::~Graphics3()
 //Initialize the GL settings
 void Graphics3::initializeGL()
 {
-//   glMatrixMode(GL_PROJECTION);
-//   glLoadIdentity();
-//   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
-//   glMatrixMode(GL_MODELVIEW);
-//   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-//   glColor3f(1, 0.98, 0);
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   glMatrixMode(GL_MODELVIEW);
+   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+   glColor3f(1, 0.98, 0);
 }
 
 //Set up the viewport based on the screen dimentions
@@ -55,11 +55,11 @@ void Graphics3::paintGL()
    f->glClear(GL_COLOR_BUFFER_BIT);
    f->glClear(GL_DEPTH_BUFFER_BIT);
 
-//   glBegin(GL_TRIANGLES);
-//		glLoadIdentity();
-//       glColor3f(double(qrand() % 100)/100, double(qrand() % 100)/100, double(qrand() % 100)/100);
+   glBegin(GL_TRIANGLES);
+        glLoadIdentity();
+       glColor3f(double(qrand() % 100)/100, double(qrand() % 100)/100, double(qrand() % 100)/100);
        divide_triangle(v[0], v[1], v[2], n);
-//   glEnd();
+   glEnd();
    f->glFlush();
 
 }

@@ -1,12 +1,12 @@
 // graphics.cpp
 
+#include <QtOpenGL>
 
-#include <QtGui>
 #include <math.h>
 #include "graphics.h"
 
 Graphics::Graphics(QWidget *parent)
-   : QOpenGLWidget(parent)
+   : QGLWidget(parent)
 {
     frequency = 1;
     amplitude = 0.6;

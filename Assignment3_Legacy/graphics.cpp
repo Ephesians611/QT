@@ -1,8 +1,6 @@
 // graphics.cpp
 // Assignment I3
 
-#include <QApplication>
-#include <QtWidgets>
 #include <QtOpenGL>
 
 #include <math.h>

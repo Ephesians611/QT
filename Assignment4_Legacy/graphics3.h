@@ -1,17 +1,16 @@
 // graphics3.h
 // Assignment I4
-// Farbod Hesaaraki
+
 
 #ifndef Graphics3_H
 #define Graphics3_H
 
-#include <QOpenGLWidget>
-#include <gl/GLU.h>
-#include <gl/GL.h>
+#include <QGLWidget>
+
 /* initial triangle */
 
 
-class Graphics3 : public QOpenGLWidget
+class Graphics3 : public QGLWidget
 {
    Q_OBJECT
 
