@@ -222,7 +222,7 @@ void MainWindow::changeAMCarrier()
     graphics1->amplitude = (double(dial->value())/20)/5;
     graphics1->frequency = double(HSlider->value())/20;
 
-    graphics1->updateGL();
+    //graphics1->updateGL();
 }
 
 //Event slot when a button to change the sceene is clicked

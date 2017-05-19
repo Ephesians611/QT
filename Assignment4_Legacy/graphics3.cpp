@@ -18,7 +18,7 @@ Graphics3::Graphics3(QWidget *parent)
 
    n = 0;
 
-   qsrand(time(NULL));
+   qsrand(NULL);
 
    QTimer *timer = new QTimer(this);
    connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
@@ -32,42 +32,42 @@ Graphics3::~Graphics3()
 //Initialize the GL settings
 void Graphics3::initializeGL()
 {
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
-   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
-   glMatrixMode(GL_MODELVIEW);
-   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-   glColor3f(1, 0.98, 0);
+//   glMatrixMode(GL_PROJECTION);
+//   glLoadIdentity();
+//   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+//   glMatrixMode(GL_MODELVIEW);
+//   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+//   glColor3f(1, 0.98, 0);
 }
 
 //Set up the viewport based on the screen dimentions
 //Function is called implicitly by initializeGL and when screen is resized
 void Graphics3::resizeGL(int w, int h)
 {
-   glViewport(0, 0, w, h);
+   //glViewport(0, 0, w, h);
 }
 
 //Paints the GL scene
 void Graphics3::paintGL()
 {
-   glClear(GL_COLOR_BUFFER_BIT);
-   glClear(GL_DEPTH_BUFFER_BIT);
+//   glClear(GL_COLOR_BUFFER_BIT);
+//   glClear(GL_DEPTH_BUFFER_BIT);
 
-   glBegin(GL_TRIANGLES);
-//		glLoadIdentity();
-       glColor3f(double(qrand() % 100)/100, double(qrand() % 100)/100, double(qrand() % 100)/100);
-       divide_triangle(v[0], v[1], v[2], n);
-   glEnd();
-   glFlush();
+//   glBegin(GL_TRIANGLES);
+////		glLoadIdentity();
+//       glColor3f(double(qrand() % 100)/100, double(qrand() % 100)/100, double(qrand() % 100)/100);
+//       divide_triangle(v[0], v[1], v[2], n);
+//   glEnd();
+//   glFlush();
 
 }
 
 void Graphics3::triangle( GLfloat *a, GLfloat *b, GLfloat *c)
 /* display one triangle */
 {
-   glVertex2fv(a);
+/*   glVertex2fv(a);
    glVertex2fv(b);
-   glVertex2fv(c);
+   glVertex2fv(c)*/;
 }
 
 void Graphics3::divide_triangle(GLfloat *a, GLfloat *b, GLfloat *c, int m)
