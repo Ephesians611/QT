@@ -1,15 +1,15 @@
 // graphics.cpp
 // Assignment I3
-// Farbod Hesaaraki
 
-#include <QtGui>
-#include <QtGui/qmatrix4x4.h>
-#include <QtOpenGL/QtOpenGL>
+#include <QApplication>
+#include <QtWidgets>
+#include <QtOpenGL>
+
 #include <math.h>
 #include "graphics.h"
 
 Graphics::Graphics(QWidget *parent)
-   : QOpenGLWidget(parent)
+   : QGLWidget(parent)
 {
 }
 
@@ -42,11 +42,11 @@ void Graphics::resizeGL( int w, int h )
 
    //setup the projection and switch to model view for transformations
 
-   //glMatrixMode(GL_PROJECTION);
-   //glLoadIdentity();
-   //glOrtho(-1, 1, -1, 1, -1, 1);
-//   glMatrixMode(GL_MODELVIEW);
-//   glLoadIdentity();
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glOrtho(-1, 1, -1, 1, -1, 1);
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
 
    //implicit call to paintGL after resized
 }
@@ -59,63 +59,63 @@ void Graphics::paintGL()
    f->glClear(GL_DEPTH_BUFFER_BIT);
 
    // point
-   //glLoadIdentity();
-//   f->glColor3f(1, 1, 1);
-//   f->glPointSize(2);
-//   f->glTranslatef(0.2, 0.5, 0);
+   glLoadIdentity();
+   glColor3f(1, 1, 1);
+   glPointSize(2);
+   glTranslatef(0.2, 0.5, 0);
    point();
 
 //   // line
-//   glLoadIdentity();
-//   glColor3f(1, 0.98, 0);
-//   glLineWidth(4);
-//   glTranslatef(0.6, 0.5, 0);
-//   glRotatef(-30.0, 0, 0, 1);
+   glLoadIdentity();
+   glColor3f(1, 0.98, 0);
+   glLineWidth(4);
+   glTranslatef(0.6, 0.5, 0);
+   glRotatef(-30.0, 0, 0, 1);
    line();
 
 //   // triangle
-//   glLoadIdentity();
-//   glColor3f(0.4, 0.16, 00);
-//   glTranslatef(-0.6, 0, 0);
-//   glScalef(0.5, 0.5, 1);
+   glLoadIdentity();
+   glColor3f(0.4, 0.16, 00);
+   glTranslatef(-0.6, 0, 0);
+   glScalef(0.5, 0.5, 1);
    polygon(3);
 
    // square
-//   glLoadIdentity();
-//   glColor3f(0.38, 0.69, 0.87);
-//   glTranslatef(-0.3, 0.5, 0);
-//   glScalef(0.5, 0.5, 1);
-//   glRotatef(45.0, 0, 0, 1);
+   glLoadIdentity();
+   glColor3f(0.38, 0.69, 0.87);
+   glTranslatef(-0.3, 0.5, 0);
+   glScalef(0.5, 0.5, 1);
+   glRotatef(45.0, 0, 0, 1);
    polygon(4);
 
    // pentagon
-//   glLoadIdentity();
-//   glColor3f(0.28, 0.77, 0.52);
-//   glTranslatef(0.6, 0, 0);
-//   glScalef(0.5, 0.5, 1);
+   glLoadIdentity();
+   glColor3f(0.28, 0.77, 0.52);
+   glTranslatef(0.6, 0, 0);
+   glScalef(0.5, 0.5, 1);
    polygon(5);
 
    // circle
-//   glLoadIdentity();
-//   glColor3f(1, 0.39, 0);
-//   glTranslatef(0.3, -0.5, 0);
-//   glScalef(0.5, 0.5, 1);
+   glLoadIdentity();
+   glColor3f(1, 0.39, 0);
+   glTranslatef(0.3, -0.5, 0);
+   glScalef(0.5, 0.5, 1);
    polygon(100);
 
 //   // elipse
-//   glLoadIdentity();
-//   glColor3f(0.68, 0.14, 0.86);
-//   glTranslatef(-.3, -0.5, 0);
-//   glRotatef(-45.0, 0, 0, 1);
-//   glScalef(0.25, 0.5, 1);
+   glLoadIdentity();
+   glColor3f(0.68, 0.14, 0.86);
+   glTranslatef(-.3, -0.5, 0);
+   glRotatef(-45.0, 0, 0, 1);
+   glScalef(0.25, 0.5, 1);
    polygon(100);
 
    // cube
-//   glLoadIdentity();
-//   glTranslatef(0, 0, 0);
-//   glScalef(0.25, 0.25, 0.25);
-//   glRotatef(45.0, 0, 1, 0);
-//   glRotatef(30.0, 1, 0, 1);
+   glLoadIdentity();
+   glTranslatef(0, 0, 0);
+   glScalef(0.25, 0.25, 0.25);
+   glRotatef(45.0, 0, 1, 0);
+   glRotatef(30.0, 1, 0, 1);
    cube();
 
    f->glFlush ();
@@ -125,17 +125,17 @@ void Graphics::paintGL()
 //with length 1
 void Graphics::line(){
    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-//   glBegin(GL_LINES);
-//       glVertex3f(-0.5, 0, 0);
-//       glVertex3f(0.5, 0, 0);
-//   glEnd();
+   glBegin(GL_LINES);
+       glVertex3f(-0.5, 0, 0);
+       glVertex3f(0.5, 0, 0);
+   glEnd();
 }
 
 //Function to draw a single point at the center of the current model identity
 void Graphics::point(){
-//   glBegin(GL_POINTS);
-//       glVertex3f(0, 0, 0);
-//   glEnd();
+   glBegin(GL_POINTS);
+       glVertex3f(0, 0, 0);
+   glEnd();
 }
 
 //Function to draw a N-sided object that is upright (defined to have the bottom edge horizontal)
@@ -148,16 +148,16 @@ void Graphics::polygon(int n){
    degree = rotate/2 + 180;//Current degree of vertex (starts rotated to make object upright)
    degToRad = 180/3.14159; //Conversion factor from degrees to radians
 
-//   glBegin(GL_POLYGON);
+   glBegin(GL_POLYGON);
 
    for(int i = 0; i < n; i++, degree += rotate)
    {
        vertx = 0.5 * sin(degree/degToRad);        //next vertex's x coordinate
        verty = 0.5 * sin((90 - degree)/degToRad); //next vertex's y coordinate
-//       glVertex3f(vertx, verty, 0);
+       glVertex3f(vertx, verty, 0);
    }
 
-//   glEnd();
+   glEnd();
 }
 
 //Function to draw a colored cube facing forward (defined as front face in positive z)
@@ -165,42 +165,42 @@ void Graphics::polygon(int n){
 void Graphics::cube()
 {
    float radius = 0.5;
-//   glBegin(GL_QUADS);
-//       // Front Face
-//       glColor3f (0.0, 0.0, 1.0);
-//       glVertex3f(-radius, -radius,  radius);
-//       glVertex3f( radius, -radius,  radius);
-//       glVertex3f( radius,  radius,  radius);
-//       glVertex3f(-radius,  radius,  radius);
-//       // Back Face
-//       glColor3f (1.0, 0.0, 1.0);
-//       glVertex3f(-radius, -radius, -radius);
-//       glVertex3f(-radius,  radius, -radius);
-//       glVertex3f( radius,  radius, -radius);
-//       glVertex3f( radius, -radius, -radius);
-//       // Top Face
-//       glColor3f (0.0, 1.0, 0.0);
-//       glVertex3f(-radius,  radius,  radius);
-//       glVertex3f(-radius,  radius, -radius);
-//       glVertex3f( radius,  radius, -radius);
-//       glVertex3f( radius,  radius,  radius);
-//       // Bottom Face
-//       glColor3f (1.0, 1.0, 0.0);
-//       glVertex3f(-radius, -radius, -radius);
-//       glVertex3f( radius, -radius, -radius);
-//       glVertex3f( radius, -radius,  radius);
-//       glVertex3f(-radius, -radius,  radius);
-//       // Right face
-//       glColor3f (0.0, 1.0, 1.0);
-//       glVertex3f( radius, -radius,  radius);
-//       glVertex3f( radius,  radius,  radius);
-//       glVertex3f( radius,  radius, -radius);
-//       glVertex3f( radius, -radius, -radius);
-//       // Left Face
-//       glColor3f (1.0, 0.0, 0.0);
-//       glVertex3f(-radius, -radius,  radius);
-//       glVertex3f(-radius, -radius, -radius);
-//       glVertex3f(-radius,  radius, -radius);
-//       glVertex3f(-radius,  radius,  radius);
-//   glEnd();
+   glBegin(GL_QUADS);
+       // Front Face
+       glColor3f (0.0, 0.0, 1.0);
+       glVertex3f(-radius, -radius,  radius);
+       glVertex3f( radius, -radius,  radius);
+       glVertex3f( radius,  radius,  radius);
+       glVertex3f(-radius,  radius,  radius);
+       // Back Face
+       glColor3f (1.0, 0.0, 1.0);
+       glVertex3f(-radius, -radius, -radius);
+       glVertex3f(-radius,  radius, -radius);
+       glVertex3f( radius,  radius, -radius);
+       glVertex3f( radius, -radius, -radius);
+       // Top Face
+       glColor3f (0.0, 1.0, 0.0);
+       glVertex3f(-radius,  radius,  radius);
+       glVertex3f(-radius,  radius, -radius);
+       glVertex3f( radius,  radius, -radius);
+       glVertex3f( radius,  radius,  radius);
+       // Bottom Face
+       glColor3f (1.0, 1.0, 0.0);
+       glVertex3f(-radius, -radius, -radius);
+       glVertex3f( radius, -radius, -radius);
+       glVertex3f( radius, -radius,  radius);
+       glVertex3f(-radius, -radius,  radius);
+       // Right face
+       glColor3f (0.0, 1.0, 1.0);
+       glVertex3f( radius, -radius,  radius);
+       glVertex3f( radius,  radius,  radius);
+       glVertex3f( radius,  radius, -radius);
+       glVertex3f( radius, -radius, -radius);
+       // Left Face
+       glColor3f (1.0, 0.0, 0.0);
+       glVertex3f(-radius, -radius,  radius);
+       glVertex3f(-radius, -radius, -radius);
+       glVertex3f(-radius,  radius, -radius);
+       glVertex3f(-radius,  radius,  radius);
+   glEnd();
 }

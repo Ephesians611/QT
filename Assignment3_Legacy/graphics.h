@@ -1,15 +1,13 @@
 // graphics.h
 // Assignment I3
-// Farbod Hesaaraki
+
 
 #ifndef Graphics_H
 #define Graphics_H
 
-#include <QOpenGLWidget>
-#include <gl/GLU.h>
-#include <gl/GL.h>
+#include <QGLWidget>
 
-class Graphics : public QOpenGLWidget
+class Graphics : public QGLWidget
 {
    Q_OBJECT
 

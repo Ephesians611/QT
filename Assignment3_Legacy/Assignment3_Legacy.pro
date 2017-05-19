@@ -1,6 +1,8 @@
 QT += core gui opengl
 
-greaterThan(QT_MAJOR_VERSION, 4) : QT += widgets
+LIBS += -lOpengl32
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
     assg3.cpp \

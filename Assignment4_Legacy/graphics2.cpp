@@ -1,6 +1,6 @@
 // graphics2.cpp
 // Assignment I4
-// Farbod Hesaaraki
+
 
 #include <QtGui>
 #include <math.h>

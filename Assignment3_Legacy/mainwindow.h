@@ -1,6 +1,5 @@
 // mainwindow.h
 // Assignment I3
-// Farbod Hesaaraki
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
