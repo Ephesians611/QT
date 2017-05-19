@@ -8,6 +8,7 @@
 #include <QOpenGLWidget>
 #include <gl/GLU.h>
 #include <gl/GL.h>
+
 class Graphics : public QOpenGLWidget
 {
    Q_OBJECT

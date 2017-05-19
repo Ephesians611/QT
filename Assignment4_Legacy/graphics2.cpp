@@ -18,22 +18,24 @@ Graphics2::~Graphics2()
 //Initialize the GL settings
 void Graphics2::initializeGL()
 {
-//   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-//   glClearDepth(1.0f);
-//   glEnable(GL_DEPTH_TEST);
-//   glDepthFunc(GL_LEQUAL);
+    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   f->glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+   f->glClearDepthf(1.0f);
+   f->glEnable(GL_DEPTH_TEST);
+   f->glDepthFunc(GL_LEQUAL);
 }
 
 //Set up the viewport based on the screen dimentions
 //Function is called implicitly by initializeGL and when screen is resized
 void Graphics2::resizeGL( int w, int h )
 {
+    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
    //algorythm to keep scene "sqare" (preserve aspect ratio)
    //even if screen is streached
-//   if(w>h)
-//       glViewport((w-h)/2, 0, h, h);
-//   else
-//       glViewport(0, (h-w)/2, w, w);
+   if(w>h)
+       f->glViewport((w-h)/2, 0, h, h);
+   else
+       f->glViewport(0, (h-w)/2, w, w);
 
 //   //setup the projection and switch to model view for transformations
 //   glMatrixMode(GL_PROJECTION);

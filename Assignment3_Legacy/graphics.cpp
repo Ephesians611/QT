@@ -3,6 +3,7 @@
 // Farbod Hesaaraki
 
 #include <QtGui>
+#include <QtGui/qmatrix4x4.h>
 #include <QtOpenGL/QtOpenGL>
 #include <math.h>
 #include "graphics.h"
@@ -22,7 +23,7 @@ void Graphics::initializeGL()
    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
 
    f->glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-   //f->glClearDepth(1.0f);
+   f->glClearDepthf(1.0f);
    f->glEnable(GL_DEPTH_TEST);
    f->glDepthFunc(GL_LEQUAL);
 }
@@ -40,6 +41,7 @@ void Graphics::resizeGL( int w, int h )
        f->glViewport(0, (h-w)/2, w, w);
 
    //setup the projection and switch to model view for transformations
+
    //glMatrixMode(GL_PROJECTION);
    //glLoadIdentity();
    //glOrtho(-1, 1, -1, 1, -1, 1);
@@ -53,8 +55,8 @@ void Graphics::resizeGL( int w, int h )
 void Graphics::paintGL()
 {
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-//   f->glClear (GL_COLOR_BUFFER_BIT);
-//   f->glClear(GL_DEPTH_BUFFER_BIT);
+   f->glClear (GL_COLOR_BUFFER_BIT);
+   f->glClear(GL_DEPTH_BUFFER_BIT);
 
    // point
    //glLoadIdentity();
@@ -106,7 +108,7 @@ void Graphics::paintGL()
 //   glTranslatef(-.3, -0.5, 0);
 //   glRotatef(-45.0, 0, 0, 1);
 //   glScalef(0.25, 0.5, 1);
-//   polygon(100);
+   polygon(100);
 
    // cube
 //   glLoadIdentity();

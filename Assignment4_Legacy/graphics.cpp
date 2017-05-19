@@ -22,7 +22,7 @@ void Graphics::initializeGL()
 {
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
    f->glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-   //glClearDepth(1.0f);
+   f->glClearDepthf(1.0f);
    f->glEnable(GL_DEPTH_TEST);
    f->glDepthFunc(GL_LEQUAL);
 }
@@ -48,8 +48,9 @@ void Graphics::resizeGL(int w, int h)
 //Paints the GL scene
 void Graphics::paintGL()
 {
-//   glClear (GL_COLOR_BUFFER_BIT);
-//   glClear(GL_DEPTH_BUFFER_BIT);
+   QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   f->glClear (GL_COLOR_BUFFER_BIT);
+   f->glClear(GL_DEPTH_BUFFER_BIT);
 
 //   glLoadIdentity();
 //   glColor3f(0, 1, 0);
@@ -58,7 +59,7 @@ void Graphics::paintGL()
 //   glRotatef(0, 0, 0, 1);
 //   signal();
 
-//   glFlush ();
+   f->glFlush ();
 }
 
 //Function to draw the signal
