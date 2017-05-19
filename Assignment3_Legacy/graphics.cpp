@@ -1,12 +1,14 @@
 // graphics.cpp
+// Assignment I3
+// Farbod Hesaaraki
 
 #include <QtGui>
-#include <QOpenGLWidget>
+#include <QtOpenGL/QtOpenGL>
 #include <math.h>
 #include "graphics.h"
 
 Graphics::Graphics(QWidget *parent)
-   : QWidget(parent)
+   : QOpenGLWidget(parent)
 {
 }
 
@@ -15,20 +17,20 @@ Graphics::~Graphics()
 }
 
 //Initialize the GL settings
-//void Graphics::initializeGL()
-//{
+void Graphics::initializeGL()
+{
 //   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 //   glClearDepth(1.0f);
 //   glEnable(GL_DEPTH_TEST);
 //   glDepthFunc(GL_LEQUAL);
-//}
+}
 
 //Set up the viewport based on the screen dimentions
 //Function is called implicitly by initializeGL and when screen is resized
-//void Graphics::resizeGL( int w, int h )
-//{
-//   //algorythm to keep scene "sqare" (preserve aspect ratio)
-//   //even if screen is streached
+void Graphics::resizeGL( int w, int h )
+{
+   //algorythm to keep scene "sqare" (preserve aspect ratio)
+   //even if screen is streached
 //   if(w>h)
 //       glViewport((w-h)/2, 0, h, h);
 //   else
@@ -41,12 +43,12 @@ Graphics::~Graphics()
 //   glMatrixMode(GL_MODELVIEW);
 //   glLoadIdentity();
 
-//   //implicit call to paintGL after resized
-//}
+   //implicit call to paintGL after resized
+}
 
 //Paints the GL scene
-//void Graphics::paintGL()
-//{
+void Graphics::paintGL()
+{
 //   glClear (GL_COLOR_BUFFER_BIT);
 //   glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -54,7 +56,7 @@ Graphics::~Graphics()
 //   glLoadIdentity();
 //   glColor3f(1, 1, 1);
 //   glPointSize(2);
-//   glTranslatef(0.2, 0.5, 0.0);
+//   glTranslatef(0.2, 0.5, 0);
 //   point();
 
 //   // line
@@ -111,7 +113,7 @@ Graphics::~Graphics()
 //   cube();
 
 //   glFlush ();
-//}
+}
 
 //Function to draw a horizontal line at the center of the current model identity
 //with length 1
@@ -120,23 +122,18 @@ void Graphics::line(){
 //       glVertex3f(-0.5, 0, 0);
 //       glVertex3f(0.5, 0, 0);
 //   glEnd();
-   QLineF line(10.0, 80.0, 90.0, 20.0);
-
-   QPainter painter(this);
-   painter.setViewport(-5, -5, 10, 10);
-   painter.drawLine(line);
 }
 
 //Function to draw a single point at the center of the current model identity
-//void Graphics::point(){
+void Graphics::point(){
 //   glBegin(GL_POINTS);
 //       glVertex3f(0, 0, 0);
 //   glEnd();
-//}
+}
 
 //Function to draw a N-sided object that is upright (defined to have the bottom edge horizontal)
 //at the center of the current model identity, with diameter = 1
-//void Graphics::polygon(int n){
+void Graphics::polygon(int n){
 
 //   float degree, vertx, verty, rotate, degToRad;
 
@@ -154,12 +151,12 @@ void Graphics::line(){
 //   }
 
 //   glEnd();
-//}
+}
 
 //Function to draw a colored cube facing forward (defined as front face in positive z)
 //at the center of the current model identity with height, width, length = 1
-//void Graphics::cube()
-//{
+void Graphics::cube()
+{
 //   float radius = 0.5;
 //   glBegin(GL_QUADS);
 //       // Front Face
@@ -199,4 +196,4 @@ void Graphics::line(){
 //       glVertex3f(-radius,  radius, -radius);
 //       glVertex3f(-radius,  radius,  radius);
 //   glEnd();
-//}
+}
