@@ -1,6 +1,4 @@
 // mainwindow.h
-// Assignment I4
-// Farbod Hesaaraki
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H

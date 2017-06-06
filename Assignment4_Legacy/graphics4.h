@@ -1,6 +1,4 @@
 // graphics4.h
-// Assignment I4
-// Farbod Hesaaraki
 
 #ifndef Graphics4_H
 #define Graphics4_H

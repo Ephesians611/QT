@@ -1,6 +1,4 @@
 // mainwindow.cpp
-// Assignment I4
-// Farbod Hesaaraki
 
 #include "mainwindow.h"
 #include "graphics.h"

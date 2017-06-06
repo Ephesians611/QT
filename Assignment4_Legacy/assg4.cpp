@@ -1,6 +1,4 @@
 // main.cpp
-// Assignment I4
-// Farbod Hesaaraki
 
 #include <QApplication>
 
