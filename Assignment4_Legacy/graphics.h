@@ -1,4 +1,5 @@
 // graphics.h
+// Johnny Sloans
 
 #ifndef Graphics_H
 #define Graphics_H

@@ -1,5 +1,6 @@
 // graphics2.h
-// Assignment I4
+// Assignment 4
+// Johnny Sloans
 
 
 #ifndef Graphics2_H

@@ -1,3 +1,5 @@
+// Johnny Sloans
+
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QVBoxLayout>

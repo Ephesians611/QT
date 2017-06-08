@@ -1,4 +1,5 @@
 // graphics.cpp
+// Johnny Sloans
 
 #include <QtOpenGL>
 

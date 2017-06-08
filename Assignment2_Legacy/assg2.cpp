@@ -1,3 +1,5 @@
+// Johnny Sloans
+
 #include <QApplication>
 
 #include "mainwindow.h"

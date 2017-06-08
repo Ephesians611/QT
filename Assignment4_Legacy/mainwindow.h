@@ -1,4 +1,5 @@
 // mainwindow.h
+// Johnny Sloans
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H

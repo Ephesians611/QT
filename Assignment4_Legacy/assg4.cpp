@@ -1,4 +1,5 @@
 // main.cpp
+// Johnny Sloans
 
 #include <QApplication>
 

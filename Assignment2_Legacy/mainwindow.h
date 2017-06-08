@@ -1,3 +1,5 @@
+// Johnny Sloans
+
 // mainwindow.h
 
 #ifndef MAINWINDOW_H

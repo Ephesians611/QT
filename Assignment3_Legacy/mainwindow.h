@@ -1,5 +1,6 @@
 // mainwindow.h
-// Assignment I3
+// Assignment 3
+// Johnny Sloans
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H

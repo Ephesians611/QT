@@ -1,3 +1,6 @@
+// Assignment 1
+// Johnny Sloans
+
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QSlider>

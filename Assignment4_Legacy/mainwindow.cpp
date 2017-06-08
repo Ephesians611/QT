@@ -1,4 +1,5 @@
 // mainwindow.cpp
+// Johnny Sloans
 
 #include "mainwindow.h"
 #include "graphics.h"
