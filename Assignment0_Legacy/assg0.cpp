@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){
     QWidget *window = new QWidget;
     window->setWindowTitle("Enter Your Age");
     QSpinBox *spinBox = new QSpinBox;
-    QSlider *slider = new QSlider(Qt::Vertical);
+    QSlider *slider = new QSlider(Qt::Horizontal);
     spinBox->setRange(0, 130);
     slider->setRange(0, 130);
     QObject::connect(spinBox, SIGNAL(valueChanged(int)),
@@ -20,9 +20,9 @@ int main(int argc, char *argv[]){
     QObject::connect(slider, SIGNAL(valueChanged(int)),
     spinBox, SLOT(setValue(int)));
     spinBox->setValue(35);
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(spinBox);
+    QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(slider);
+    layout->addWidget(spinBox);
     window->setLayout(layout);
     window->show();
 
