@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
                         btnLoadTrace->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
 
         QGroupBox *grpSimulationInputControls = new QGroupBox("Simulation Input");
-            QHBoxLayout *layout1 = new QHBoxLayout;
+            QHBoxLayout *loutSimulationInput = new QHBoxLayout;
                 QComboBox *cboReplacementPolicy = new QComboBox();
                     cboReplacementPolicy->addItem("LRU");
                     cboReplacementPolicy->addItem("LFU");
@@ -40,32 +40,32 @@ int main(int argc, char *argv[])
                 QComboBox *cboCacheType = new QComboBox();
                     cboCacheType->addItem("Instruction");
                     cboCacheType->addItem("Data");
+                QSpinBox *spnSets = new QSpinBox;
+                    spnSets->setRange(0, 100);
+                QSpinBox *spnWays = new QSpinBox;
+                    spnWays->setRange(0, 100);
+                QSpinBox *spnBytesPerBlock = new QSpinBox;
+                    spnBytesPerBlock->setRange(0, 100);
+
+        QGroupBox *grpSimulationControls = new QGroupBox("Simulation Control");
+            QGridLayout *loutSimulationControl = new QGridLayout;
+                QPushButton *btnRun = new QPushButton("Start");
+                        btnRun->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
+                QPushButton *btnStep = new QPushButton("Go");
+                        btnStep->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
+                QPushButton *btnRunNumSteps = new QPushButton("Step S");
+                        btnRunNumSteps->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
+                QPushButton *btnRunUntil = new QPushButton("Break B");
+                        btnRunUntil->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
+
+        QGroupBox *grpSimulationOutputControls = new QGroupBox("Simulation Output");
+            QGridLayout *loutSimulationOutput = new QGridLayout;
                 QLCDNumber *LCDStation = new QLCDNumber();
                     LCDStation->setDigitCount(4);
                     LCDStation->setMode(QLCDNumber::Dec);
                     LCDStation->display(535);
                     LCDStation->setSegmentStyle(QLCDNumber::Flat);
-            QVBoxLayout *layout2 = new QVBoxLayout;
-                QSlider *HSlider = new QSlider(Qt::Horizontal);
-                    HSlider->setRange(535, 1605);
 
-        QGroupBox *grpSimulationControls = new QGroupBox("Simulation Control");
-            QGridLayout *voiceLayout = new QGridLayout;
-                QDial *dial = new QDial();
-                    dial->setFixedSize(165, 165);
-                    dial->setRange(0, 100);
-                QSlider *VSlider = new QSlider(Qt::Vertical);
-                    VSlider->setRange(0, 100);
-                QSpinBox *spinBox = new QSpinBox;
-                    spinBox->setRange(0, 100);
-                QLCDNumber *LCDVolume = new QLCDNumber();
-                    LCDVolume->setSegmentStyle(QLCDNumber::Flat);
-                QLCDNumber *LCDBass = new QLCDNumber();
-                    LCDBass->setSegmentStyle(QLCDNumber::Flat);
-                QLCDNumber *LCDTreble = new QLCDNumber();
-                    LCDTreble->setSegmentStyle(QLCDNumber::Flat);
-
-        QGroupBox *grpSimulationOutputControls = new QGroupBox("Simulation Output");
 
         QPushButton *quit = new QPushButton("Quit");
                 quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
