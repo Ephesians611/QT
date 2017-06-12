@@ -26,16 +26,20 @@ int main(int argc, char *argv[])
     //  Widget setup
     QVBoxLayout *loutMain = new QVBoxLayout;
 
-        QGroupBox *grpSimulationInputTraceFile = new QGroupBox("Simulation Trace File Input");
+        QGroupBox *grpSimulationTraceFileInput = new QGroupBox("Simulation Trace File Input");
             QHBoxLayout *loutLoadTrace = new QHBoxLayout;
                 QPushButton *btnLoadTrace = new QPushButton("Load Trace File...");
                         btnLoadTrace->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
 
         QGroupBox *grpSimulationInputControls = new QGroupBox("Simulation Input");
             QHBoxLayout *layout1 = new QHBoxLayout;
-                QComboBox *comboBox = new QComboBox();
-                    comboBox->addItem("AM");
-                    comboBox->addItem("FM");
+                QComboBox *cboReplacementPolicy = new QComboBox();
+                    cboReplacementPolicy->addItem("LRU");
+                    cboReplacementPolicy->addItem("LFU");
+                    cboReplacementPolicy->addItem("Random");
+                QComboBox *cboCacheType = new QComboBox();
+                    cboCacheType->addItem("Instruction");
+                    cboCacheType->addItem("Data");
                 QLCDNumber *LCDStation = new QLCDNumber();
                     LCDStation->setDigitCount(4);
                     LCDStation->setMode(QLCDNumber::Dec);
@@ -66,16 +70,18 @@ int main(int argc, char *argv[])
         QPushButton *quit = new QPushButton("Quit");
                 quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
 
-    // Widget Input-Output Connections
+    // Widget Connections
     QObject::connect(HSlider,   SIGNAL(valueChanged(int)),  LCDStation,     SLOT(display(int)));
     QObject::connect(dial,      SIGNAL(valueChanged(int)),  LCDVolume,      SLOT(display(int)));
     QObject::connect(VSlider,   SIGNAL(valueChanged(int)),  LCDBass,        SLOT(display(int)));
     QObject::connect(spinBox,   SIGNAL(valueChanged(int)),  LCDTreble,      SLOT(display(int)));
     QObject::connect(quit,      SIGNAL(clicked()),          qApp,           SLOT(quit()));  // apply quit function to quit button
 
-    // Child Trace File Load Layout
+    // Widget Layouts
+    //
+    // Child Trace File Input Layout
     loutLoadTrace->addWidget(btnLoadTrace,0, Qt::AlignLeft);
-    grpSimulationInputTraceFile->setLayout(loutLoadTrace);
+    grpSimulationTraceFileInput->setLayout(loutLoadTrace);
 
     // Child Simulation Input Controls Layout
     layout1->addWidget(comboBox);
@@ -96,7 +102,7 @@ int main(int argc, char *argv[])
     // Child Simulation Output Controls Layout
 
     // Organize Child Layouts
-    loutMain->addWidget(grpSimulationInputTraceFile);
+    loutMain->addWidget(grpSimulationTraceFileInput);
     loutMain->addWidget(grpSimulationInputControls);
     loutMain->addWidget(grpSimulationControls);
     loutMain->addWidget(grpSimulationOutputControls);
