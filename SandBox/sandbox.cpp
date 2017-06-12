@@ -15,7 +15,6 @@
 
 int main(int argc, char *argv[])
 {
-//   the screenshot that I submitted has both following styles
 //    QApplication::setStyle("windows");
     QApplication::setStyle("platinum");
 
@@ -24,8 +23,15 @@ int main(int argc, char *argv[])
 
     window->setWindowTitle("Assignment I1 - Cache Simulation");
 
-    QVBoxLayout *layout = new QVBoxLayout;
-        QGroupBox *stationGroup = new QGroupBox("Station Controls");
+    //  Widget setup
+    QVBoxLayout *loutMain = new QVBoxLayout;
+
+        QGroupBox *grpSimulationInputTraceFile = new QGroupBox("Simulation Trace File Input");
+            QHBoxLayout *loutLoadTrace = new QHBoxLayout;
+                QPushButton *btnLoadTrace = new QPushButton("Load Trace File...");
+                        btnLoadTrace->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
+
+        QGroupBox *grpSimulationInputControls = new QGroupBox("Simulation Input");
             QHBoxLayout *layout1 = new QHBoxLayout;
                 QComboBox *comboBox = new QComboBox();
                     comboBox->addItem("AM");
@@ -37,9 +43,9 @@ int main(int argc, char *argv[])
                     LCDStation->setSegmentStyle(QLCDNumber::Flat);
             QVBoxLayout *layout2 = new QVBoxLayout;
                 QSlider *HSlider = new QSlider(Qt::Horizontal);
-                    HSlider->setRange(535, 1605);  // The AM range is 535 - 1605 KHz
+                    HSlider->setRange(535, 1605);
 
-        QGroupBox *voiceGroup = new QGroupBox("Voice Controls");
+        QGroupBox *grpSimulationControls = new QGroupBox("Simulation Control");
             QGridLayout *voiceLayout = new QGridLayout;
                 QDial *dial = new QDial();
                     dial->setFixedSize(165, 165);
@@ -55,41 +61,53 @@ int main(int argc, char *argv[])
                 QLCDNumber *LCDTreble = new QLCDNumber();
                     LCDTreble->setSegmentStyle(QLCDNumber::Flat);
 
+        QGroupBox *grpSimulationOutputControls = new QGroupBox("Simulation Output");
+
         QPushButton *quit = new QPushButton("Quit");
-                quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the qiut button
+                quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
 
-    // connect each widget to its LCD output
-    QObject::connect(HSlider, SIGNAL(valueChanged(int)), LCDStation, SLOT(display(int)));
-    QObject::connect(dial, SIGNAL(valueChanged(int)), LCDVolume, SLOT(display(int)));
-    QObject::connect(VSlider, SIGNAL(valueChanged(int)), LCDBass, SLOT(display(int)));
-    QObject::connect(spinBox, SIGNAL(valueChanged(int)), LCDTreble, SLOT(display(int)));
-    QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));  // apply quit function to quit button
+    // Widget Input-Output Connections
+    QObject::connect(HSlider,   SIGNAL(valueChanged(int)),  LCDStation,     SLOT(display(int)));
+    QObject::connect(dial,      SIGNAL(valueChanged(int)),  LCDVolume,      SLOT(display(int)));
+    QObject::connect(VSlider,   SIGNAL(valueChanged(int)),  LCDBass,        SLOT(display(int)));
+    QObject::connect(spinBox,   SIGNAL(valueChanged(int)),  LCDTreble,      SLOT(display(int)));
+    QObject::connect(quit,      SIGNAL(clicked()),          qApp,           SLOT(quit()));  // apply quit function to quit button
 
-    // organizing station related widgets
+    // Child Trace File Load Layout
+    loutLoadTrace->addWidget(btnLoadTrace,0, Qt::AlignLeft);
+    grpSimulationInputTraceFile->setLayout(loutLoadTrace);
+
+    // Child Simulation Input Controls Layout
     layout1->addWidget(comboBox);
     layout1->addWidget(LCDStation);
     layout2->addLayout(layout1);
     layout2->addWidget(HSlider);
-    stationGroup->setLayout(layout2);
+    grpSimulationInputControls->setLayout(layout2);
 
-    // organizing voice related widgets
+    // Child Simulation Controls Layout
     voiceLayout->addWidget(dial, 0, 0, Qt::AlignCenter);
     voiceLayout->addWidget(LCDVolume, 1, 0);
     voiceLayout->addWidget(VSlider, 0, 1, Qt::AlignCenter);
     voiceLayout->addWidget(LCDBass, 1, 1);
     voiceLayout->addWidget(spinBox, 0, 2, Qt::AlignCenter);
     voiceLayout->addWidget(LCDTreble, 1, 2);
-    voiceGroup->setLayout(voiceLayout);
+    grpSimulationControls->setLayout(voiceLayout);
 
-    layout->addWidget(stationGroup);
-    layout->addWidget(voiceGroup);
-    layout->addWidget(quit, Qt::AlignCenter);
+    // Child Simulation Output Controls Layout
 
-    layout->setAlignment(quit, Qt::AlignHCenter); 	// to align center the quit button horizontally
+    // Organize Child Layouts
+    loutMain->addWidget(grpSimulationInputTraceFile);
+    loutMain->addWidget(grpSimulationInputControls);
+    loutMain->addWidget(grpSimulationControls);
+    loutMain->addWidget(grpSimulationOutputControls);
+    loutMain->addWidget(quit, Qt::AlignCenter);
+    loutMain->setAlignment(quit, Qt::AlignHCenter); 	// to align center the quit button horizontally
 
-    window->setLayout(layout);
+    // Parent Window Layout
+    window->setLayout(loutMain);
 
     window->show();
+
     return app.exec();
 }
 
