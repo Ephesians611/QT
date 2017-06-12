@@ -39,9 +39,8 @@ int main(int argc, char *argv[])
                     cboReplacementPolicy->addItem("LRU");
                     cboReplacementPolicy->addItem("LFU");
                     cboReplacementPolicy->addItem("Random");
-                QGroupBox *grpCacheType = new QGroupBox();
-                    QRadioButton *rdoInstruction = new QRadioButton("Instruction");
-                    QRadioButton *rdoData = new QRadioButton("Data");
+                QRadioButton *rdoInstruction = new QRadioButton("Instruction");
+                QRadioButton *rdoData = new QRadioButton("Data");
                     rdoInstruction->setChecked(true);
             QGridLayout *grdloutSimulationInput = new QGridLayout;
                 QSlider *hsSets = new QSlider(Qt::Horizontal);
@@ -100,14 +99,15 @@ int main(int argc, char *argv[])
 
     // Child Simulation Input Controls Layout
     vloutSimulationInput->addWidget(cboReplacementPolicy);
-    vloutSimulationInput->addWidget(grpCacheType);
+    vloutSimulationInput->addWidget(rdoInstruction);
+    vloutSimulationInput->addWidget(rdoData);
 
-    grdloutSimulationInput->addWidget(hsSets,               0, 0, Qt::AlignBottom);
-    grdloutSimulationInput->addWidget(lcdNumSets,           1, 0, Qt::AlignBottom);
-    grdloutSimulationInput->addWidget(spnWays,              0, 1, Qt::AlignBottom);
-    grdloutSimulationInput->addWidget(lcdNumWays,           1, 1, Qt::AlignBottom);
+    grdloutSimulationInput->addWidget(hsSets,               0, 0, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdNumSets,           1, 0, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(spnWays,              0, 1, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdNumWays,           1, 1, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(dialBytesPerBlock,    0, 2, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,  2, 2, Qt::AlignTop);
+    grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,  2, 2, Qt::AlignCenter);
 
     hloutSimulationInput->addLayout(vloutSimulationInput);
     hloutSimulationInput->addLayout(grdloutSimulationInput);
