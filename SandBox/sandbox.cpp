@@ -119,11 +119,9 @@ int main(int argc, char *argv[])
     grdloutSimulationInput->addWidget(lblSets,              0, 0, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(hsSets,               1, 0, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(lcdNumSets,           2, 0, Qt::AlignCenter);
-
     grdloutSimulationInput->addWidget(lblWays,              0, 1, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(spnWays,              1, 1, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(lcdNumWays,           2, 1, Qt::AlignCenter);
-
     grdloutSimulationInput->addWidget(lblBytesPerBlock,     0, 2, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(dialBytesPerBlock,    1, 2, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,  2, 2, Qt::AlignCenter);
