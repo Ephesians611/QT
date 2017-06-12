@@ -66,10 +66,12 @@ int main(int argc, char *argv[])
                         btnRunNumSteps->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
                 QSpinBox *spnNumSteps = new QSpinBox;
                     spnNumSteps->setRange(1, 16);
+                    spnNumSteps->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
                 QPushButton *btnRunUntil = new QPushButton("Break B");
                         btnRunUntil->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
                 QSpinBox *spnBreakAt = new QSpinBox;
                     spnBreakAt->setRange(1, 16);
+                    spnBreakAt->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching the button
 
         QGroupBox *grpSimulationOutputControls = new QGroupBox("Simulation Output");
             QGridLayout *grdloutSimulationOutput = new QGridLayout;
