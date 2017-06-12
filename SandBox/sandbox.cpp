@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
                     cboReplacementPolicy->addItem("LRU");
                     cboReplacementPolicy->addItem("LFU");
                     cboReplacementPolicy->addItem("Random");
+                    cboReplacementPolicy->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
                 QLabel *lblCacheType = new QLabel("Cache Type");
                 QRadioButton *rdoInstruction = new QRadioButton("Instruction");
                 QRadioButton *rdoData = new QRadioButton("Data");
