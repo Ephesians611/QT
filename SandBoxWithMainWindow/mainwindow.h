@@ -104,6 +104,15 @@ private:
                 QLabel *lblMissRatio;
                 QLCDNumber *lcdMissRatio;
 
+                QLabel *lblReferenceWordSize;
+                QLCDNumber *lcdReferenceWordSize;\
+                QLabel *lblOffsetFieldSize;
+                QLCDNumber *lcdOffsetFieldSize;
+                QLabel *lblIndexFieldSize;
+                QLCDNumber *lcdIndexFieldSize;
+                QLabel *lblTagFieldSize;
+                QLCDNumber *lcdTagFieldSize;
+
         QPushButton *quit;
 };
 

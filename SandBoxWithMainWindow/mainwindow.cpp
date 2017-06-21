@@ -175,6 +175,18 @@ void MainWindow::createControls()
                lblMissRatio = new QLabel("Miss Ratio");
                lcdMissRatio = new QLCDNumber();
                    lcdMissRatio->setSegmentStyle(QLCDNumber::Flat);
+               lblReferenceWordSize = new QLabel("Reference Word Size (bits)");
+               lcdReferenceWordSize = new QLCDNumber();\
+                   lcdReferenceWordSize->setSegmentStyle(QLCDNumber::Flat);
+               lblOffsetFieldSize = new QLabel("Offset Field Size (bits)");
+               lcdOffsetFieldSize = new QLCDNumber();
+                   lcdOffsetFieldSize->setSegmentStyle(QLCDNumber::Flat);
+               lblIndexFieldSize = new QLabel("Index Field Size (bits)");
+               lcdIndexFieldSize = new QLCDNumber();
+                   lcdIndexFieldSize->setSegmentStyle(QLCDNumber::Flat);
+               lblTagFieldSize = new QLabel("Tag Field Size (bits)");
+               lcdTagFieldSize = new QLCDNumber();
+                   lcdTagFieldSize->setSegmentStyle(QLCDNumber::Flat);
 
        quit = new QPushButton("Quit");
                quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
@@ -226,14 +238,23 @@ void MainWindow::createControls()
    grpSimulationControls->setLayout(grdloutSimulationControl);
 
    // Child Simulation Output Controls Layout
-   grdloutSimulationOutput->addWidget(lblMemAccessInstances,   0, 0, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lcdMemAccessInstances,   1, 0, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lblCompMissRatio,        0, 1, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lcdCompMissRatio,        1, 1, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lblHitRatio,             0, 2, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lcdHitRatio,             1, 2, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lblMissRatio,            0, 3, Qt::AlignCenter);
-   grdloutSimulationOutput->addWidget(lcdMissRatio,            1, 3, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblMemAccessInstances,    0, 0, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdMemAccessInstances,    1, 0, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblCompMissRatio,         0, 1, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdCompMissRatio,         1, 1, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblHitRatio,              0, 2, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdHitRatio,              1, 2, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblMissRatio,             0, 3, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdMissRatio,             1, 3, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblReferenceWordSize,     2, 0, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdReferenceWordSize,     3, 0, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblOffsetFieldSize,       2, 1, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdOffsetFieldSize,       3, 1, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblIndexFieldSize,        2, 2, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdIndexFieldSize,        3, 2, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lblTagFieldSize,          2, 3, Qt::AlignCenter);
+   grdloutSimulationOutput->addWidget(lcdTagFieldSize,          3, 3, Qt::AlignCenter);
+
    grpSimulationOutputControls->setLayout(grdloutSimulationOutput);
 
    // Organize Child Layouts
@@ -248,5 +269,5 @@ void MainWindow::createControls()
    //window->setLayout(loutMain);
 
    dockCentralWidget->setLayout(loutMain);
-   dockCentralWidget->setFixedWidth(460);
+   dockCentralWidget->setFixedWidth(560);
 }
