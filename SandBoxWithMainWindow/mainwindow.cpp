@@ -30,8 +30,8 @@ MainWindow::MainWindow(QWidget *parent) :
     createMenus();
 
     setWindowTitle(tr("AssignmentI2"));
-    setMinimumSize(160, 160);
-    resize(700, 340);
+    setMinimumSize(260, 260);
+    resize(700, 640);
 }
 
 MainWindow::~MainWindow()
@@ -104,74 +104,74 @@ void MainWindow::createControls()
    //  Widget setup
    QVBoxLayout *loutMain = new QVBoxLayout;
 
-       *grpSimulationTraceFileInput = new QGroupBox("Simulation Trace File Input");
-           *loutLoadTrace = new QHBoxLayout;
-               *btnLoadTrace = new QPushButton("Load Trace File...");
+       grpSimulationTraceFileInput = new QGroupBox("Simulation Trace File Input");
+           loutLoadTrace = new QHBoxLayout;
+               btnLoadTrace = new QPushButton("Load Trace File...");
                        btnLoadTrace->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
 
-       *grpSimulationInputControls = new QGroupBox("Simulation Input");
-           *hloutSimulationInput = new QHBoxLayout;
-            *vloutSimulationInput = new QVBoxLayout;
-               *lblReplacementPolicy = new QLabel("Replacement Policy");
-               *cboReplacementPolicy = new QComboBox();
+       grpSimulationInputControls = new QGroupBox("Simulation Input");
+           hloutSimulationInput = new QHBoxLayout;
+            vloutSimulationInput = new QVBoxLayout;
+               lblReplacementPolicy = new QLabel("Replacement Policy");
+               cboReplacementPolicy = new QComboBox();
                    cboReplacementPolicy->addItem("LRU");
                    cboReplacementPolicy->addItem("LFU");
                    cboReplacementPolicy->addItem("Random");
                    cboReplacementPolicy->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *lblCacheType = new QLabel("Cache Type");
-               *rdoInstruction = new QRadioButton("Instruction");
-               *rdoData = new QRadioButton("Data");
+               lblCacheType = new QLabel("Cache Type");
+               rdoInstruction = new QRadioButton("Instruction");
+               rdoData = new QRadioButton("Data");
                    rdoInstruction->setChecked(true);
-           *grdloutSimulationInput = new QGridLayout;
-               *lblSets = new QLabel("Number Sets");
-               *hsSets = new QSlider(Qt::Horizontal);
+           grdloutSimulationInput = new QGridLayout;
+               lblSets = new QLabel("Number Sets");
+               hsSets = new QSlider(Qt::Horizontal);
                    hsSets->setRange(1, 16);
-               *lcdNumSets = new QLCDNumber();\
+               lcdNumSets = new QLCDNumber();\
                    lcdNumSets->setSegmentStyle(QLCDNumber::Flat);
-               *lblWays = new QLabel("Number Ways");
-               *spnWays = new QSpinBox;
+               lblWays = new QLabel("Number Ways");
+               spnWays = new QSpinBox;
                    spnWays->setRange(1, 16);
-               *lcdNumWays = new QLCDNumber();
+               lcdNumWays = new QLCDNumber();
                    lcdNumWays->setSegmentStyle(QLCDNumber::Flat);
-               *lblBytesPerBlock = new QLabel("Bytes Per Block");
-               *dialBytesPerBlock = new QDial();
+               lblBytesPerBlock = new QLabel("Bytes Per Block");
+               dialBytesPerBlock = new QDial();
                    dialBytesPerBlock->setRange(4, 1024);
-               *lcdNumBytesPerBlock = new QLCDNumber();
+               lcdNumBytesPerBlock = new QLCDNumber();
                    lcdNumBytesPerBlock->setSegmentStyle(QLCDNumber::Flat);
 
-       *grpSimulationControls = new QGroupBox("Simulation Control");
-           *grdloutSimulationControl = new QGridLayout;
-               *btnRun = new QPushButton("Start");
+       grpSimulationControls = new QGroupBox("Simulation Control");
+           grdloutSimulationControl = new QGridLayout;
+               btnRun = new QPushButton("Start");
                        btnRun->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *btnContinue = new QPushButton("Continue");
+               btnContinue = new QPushButton("Continue");
                        btnContinue->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *btnRunNumSteps = new QPushButton("Step S");
+               btnRunNumSteps = new QPushButton("Step S");
                        btnRunNumSteps->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *spnNumSteps = new QSpinBox;
+               spnNumSteps = new QSpinBox;
                    spnNumSteps->setRange(1, 16);
                    spnNumSteps->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *btnRunUntil = new QPushButton("Break B");
+               btnRunUntil = new QPushButton("Break B");
                        btnRunUntil->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
-               *spnBreakAt = new QSpinBox;
+               spnBreakAt = new QSpinBox;
                    spnBreakAt->setRange(1, 16);
                    spnBreakAt->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
 
-       *grpSimulationOutputControls = new QGroupBox("Simulation Output");
-           *grdloutSimulationOutput = new QGridLayout;
-               *lblMemAccessInstances = new QLabel("Mem Access Instances");
-               *lcdMemAccessInstances = new QLCDNumber();\
+       grpSimulationOutputControls = new QGroupBox("Simulation Output");
+           grdloutSimulationOutput = new QGridLayout;
+               lblMemAccessInstances = new QLabel("Mem Access Instances");
+               lcdMemAccessInstances = new QLCDNumber();\
                    lcdMemAccessInstances->setSegmentStyle(QLCDNumber::Flat);
-               *lblCompMissRatio = new QLabel("Comp Miss Ratio");
-               *lcdCompMissRatio = new QLCDNumber();
+               lblCompMissRatio = new QLabel("Comp Miss Ratio");
+               lcdCompMissRatio = new QLCDNumber();
                    lcdCompMissRatio->setSegmentStyle(QLCDNumber::Flat);
-               *lblHitRatio = new QLabel("Hit Ratio");
-               *lcdHitRatio = new QLCDNumber();
+               lblHitRatio = new QLabel("Hit Ratio");
+               lcdHitRatio = new QLCDNumber();
                    lcdHitRatio->setSegmentStyle(QLCDNumber::Flat);
-               *lblMissRatio = new QLabel("Miss Ratio");
-               *lcdMissRatio = new QLCDNumber();
+               lblMissRatio = new QLabel("Miss Ratio");
+               lcdMissRatio = new QLCDNumber();
                    lcdMissRatio->setSegmentStyle(QLCDNumber::Flat);
 
-       *quit = new QPushButton("Quit");
+       quit = new QPushButton("Quit");
                quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
 
    // Widget Connections
@@ -236,7 +236,7 @@ void MainWindow::createControls()
    loutMain->setAlignment(quit, Qt::AlignHCenter); 	// to align center the quit button horizontally
 
    // Parent Window Layout
-   window->setLayout(loutMain);
+   //window->setLayout(loutMain);
 
    dockCentralWidget->setLayout(loutMain);
    dockCentralWidget->setFixedWidth(260);

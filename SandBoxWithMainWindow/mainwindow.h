@@ -16,6 +16,11 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QTextEdit>
+#include <QDockWidget>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QMenu>
+#include <QMenuBar>
 
 namespace Ui {
 class MainWindow;
