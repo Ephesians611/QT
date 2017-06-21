@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createMenus();
 
     setWindowTitle(tr("AssignmentI2"));
-    setMinimumSize(260, 260);
+    setMinimumSize(360, 360);
     resize(700, 640);
 }
 
@@ -62,7 +62,7 @@ void MainWindow::open()
 void MainWindow::help()
 {
     QMessageBox::about(this, tr("Help"),
-            tr("The goal of assignments I1 to I6 is to produce a user interface to a \"software radio.\" The interface enables control of parameters of the radio such as modulation, station, and volume, as well as bass settings, treble settings, stereo, etc."));
+            tr("The goal of assignments I1 to I6 is to produce a user interface to a \"cache simulator.\" The interface enables control of parameters of the simulator such as type, number set, and replacement policy"));
 }
 
 void MainWindow::createActions()
@@ -239,5 +239,5 @@ void MainWindow::createControls()
    //window->setLayout(loutMain);
 
    dockCentralWidget->setLayout(loutMain);
-   dockCentralWidget->setFixedWidth(260);
+   dockCentralWidget->setFixedWidth(460);
 }
