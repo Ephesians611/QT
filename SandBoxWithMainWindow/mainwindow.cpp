@@ -1,10 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <math.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    a = 0;
+    b = 0;
+    c = 0;
+
     ui->setupUi(this);
 
     QWidget *window = new QWidget;
@@ -63,6 +68,27 @@ void MainWindow::help()
 {
     QMessageBox::about(this, tr("Help"),
             tr("The goal of assignments I1 to I6 is to produce a user interface to a \"cache simulator.\" The interface enables control of parameters of the simulator such as type, number set, and replacement policy"));
+}
+
+void MainWindow::getReferenceWordValue(int memorySize)
+{
+    a = ceil(log2(memorySize));
+    lcdReferenceWordSize->display(a);
+}
+void MainWindow::getOffsetFieldValue(int bytesPerBlock)
+{
+    b = ceil(log2(bytesPerBlock));
+    lcdOffsetFieldSize->display(b);
+}
+void MainWindow::getIndexFieldValue(int numberSets)
+{
+    c = ceil(log2(numberSets));
+    lcdIndexFieldSize->display(c);
+}
+
+void MainWindow::getTagFieldValue(int)
+{
+    lcdTagFieldSize->display(a-b-c);
 }
 
 void MainWindow::createActions()
@@ -139,8 +165,8 @@ void MainWindow::createControls()
                lcdNumBytesPerBlock = new QLCDNumber();
                    lcdNumBytesPerBlock->setSegmentStyle(QLCDNumber::Flat);
                lblMemorySize = new QLabel("MemorySize");
-               dialMemorySize = new QDial();
-                   dialMemorySize->setRange(8, 28);
+               spnMemorySize = new QSpinBox();
+                   spnMemorySize->setRange(pow(2,8), pow(2,28));
                lcdMemorySize = new QLCDNumber();
                    lcdMemorySize->setSegmentStyle(QLCDNumber::Flat);
 
@@ -195,12 +221,12 @@ void MainWindow::createControls()
    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdNumSets,          SLOT(display(int)));
    QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,          SLOT(display(int)));
    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock, SLOT(display(int)));
-   QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
+   QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
 
-   QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdReferenceWordSize,SLOT(display(int)));
-   QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdOffsetFieldSize,  SLOT(display(int)));
-   QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdIndexFieldSize,   SLOT(display(int)));
-   //QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdTagFieldSize,     SLOT(display(int)));
+   QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   this,   SLOT(getReferenceWordValue(int)));
+   QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),   this,   SLOT(getOffsetFieldValue(int)));
+   QObject::connect(hsSets,            SIGNAL(valueChanged(int)),   this,   SLOT(getIndexFieldValue(int)));
+   QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   this,   SLOT(getTagFieldValue(int)));
 
    QObject::connect(quit,              SIGNAL(clicked()),          qApp,                SLOT(quit()));  // apply quit function to quit button
 
@@ -227,7 +253,7 @@ void MainWindow::createControls()
    grdloutSimulationInput->addWidget(dialBytesPerBlock,     1, 2, Qt::AlignCenter);
    grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,   2, 2, Qt::AlignCenter);
    grdloutSimulationInput->addWidget(lblMemorySize,         0, 3, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(dialMemorySize,        1, 3, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(spnMemorySize,        1, 3, Qt::AlignCenter);
    grdloutSimulationInput->addWidget(lcdMemorySize,         2, 3, Qt::AlignCenter);
 
    hloutSimulationInput->addLayout(vloutSimulationInput);

@@ -37,10 +37,15 @@ public:
 private slots:
     void open();
     void help();
+    void getReferenceWordValue(int);
+    void getOffsetFieldValue(int);
+    void getIndexFieldValue(int);
+    void getTagFieldValue(int);
+
 
 private:
     Ui::MainWindow *ui;
-
+    int a, b, c;
     void createActions();
     void createMenus();
     void createControls();
@@ -81,7 +86,7 @@ private:
                 QDial *dialBytesPerBlock;
                 QLCDNumber *lcdNumBytesPerBlock;
                 QLabel *lblMemorySize;
-                QDial *dialMemorySize;
+                QSpinBox *spnMemorySize;
                 QLCDNumber *lcdMemorySize;
 
         QGroupBox *grpSimulationControls;
