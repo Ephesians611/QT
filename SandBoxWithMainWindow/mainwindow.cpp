@@ -138,6 +138,11 @@ void MainWindow::createControls()
                    dialBytesPerBlock->setRange(4, 1024);
                lcdNumBytesPerBlock = new QLCDNumber();
                    lcdNumBytesPerBlock->setSegmentStyle(QLCDNumber::Flat);
+               lblMemorySize = new QLabel("MemorySize");
+               dialMemorySize = new QDial();
+                   dialMemorySize->setRange(8, 28);
+               lcdMemorySize = new QLCDNumber();
+                   lcdMemorySize->setSegmentStyle(QLCDNumber::Flat);
 
        grpSimulationControls = new QGroupBox("Simulation Control");
            grdloutSimulationControl = new QGridLayout;
@@ -175,10 +180,11 @@ void MainWindow::createControls()
                quit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);	// to avoid stretching
 
    // Widget Connections
-   QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdNumSets,         SLOT(display(int)));
-   QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,         SLOT(display(int)));
-   QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock,SLOT(display(int)));
-   QObject::connect(quit,              SIGNAL(clicked()),          qApp,               SLOT(quit()));  // apply quit function to quit button
+   QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdNumSets,          SLOT(display(int)));
+   QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,          SLOT(display(int)));
+   QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock, SLOT(display(int)));
+   QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
+   QObject::connect(quit,              SIGNAL(clicked()),          qApp,                SLOT(quit()));  // apply quit function to quit button
 
    // Widget Layouts
    //
@@ -193,15 +199,18 @@ void MainWindow::createControls()
    vloutSimulationInput->addWidget(rdoInstruction);
    vloutSimulationInput->addWidget(rdoData);
 
-   grdloutSimulationInput->addWidget(lblSets,              0, 0, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(hsSets,               1, 0, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(lcdNumSets,           2, 0, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(lblWays,              0, 1, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(spnWays,              1, 1, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(lcdNumWays,           2, 1, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(lblBytesPerBlock,     0, 2, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(dialBytesPerBlock,    1, 2, Qt::AlignCenter);
-   grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,  2, 2, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lblSets,               0, 0, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(hsSets,                1, 0, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lcdNumSets,            2, 0, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lblWays,               0, 1, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(spnWays,               1, 1, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lcdNumWays,            2, 1, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lblBytesPerBlock,      0, 2, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(dialBytesPerBlock,     1, 2, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,   2, 2, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lblMemorySize,         0, 3, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(dialMemorySize,        1, 3, Qt::AlignCenter);
+   grdloutSimulationInput->addWidget(lcdMemorySize,         2, 3, Qt::AlignCenter);
 
    hloutSimulationInput->addLayout(vloutSimulationInput);
    hloutSimulationInput->addLayout(grdloutSimulationInput);

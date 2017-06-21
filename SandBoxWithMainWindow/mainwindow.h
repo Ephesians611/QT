@@ -80,6 +80,9 @@ private:
                 QLabel *lblBytesPerBlock;
                 QDial *dialBytesPerBlock;
                 QLCDNumber *lcdNumBytesPerBlock;
+                QLabel *lblMemorySize;
+                QDial *dialMemorySize;
+                QLCDNumber *lcdMemorySize;
 
         QGroupBox *grpSimulationControls;
             QGridLayout *grdloutSimulationControl;
