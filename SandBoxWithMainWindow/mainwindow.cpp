@@ -1,3 +1,6 @@
+// Assignment I2
+// Johnny Sloans
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <math.h>

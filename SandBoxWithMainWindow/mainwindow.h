@@ -1,3 +1,6 @@
+// Assignment I2
+// Johnny Sloans
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
