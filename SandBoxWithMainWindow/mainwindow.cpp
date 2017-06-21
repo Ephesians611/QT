@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createActions();	// sets the actions for menu (open, help and exit)
     createMenus();
 
-    setWindowTitle(tr("AssignmentI2"));
+    setWindowTitle(tr("Johnny Sloans Assignment I2"));
     setMinimumSize(360, 360);
     resize(700, 640);
 }
