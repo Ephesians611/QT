@@ -196,6 +196,12 @@ void MainWindow::createControls()
    QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,          SLOT(display(int)));
    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock, SLOT(display(int)));
    QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
+
+   QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdReferenceWordSize,SLOT(display(int)));
+   QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdOffsetFieldSize,  SLOT(display(int)));
+   QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdIndexFieldSize,   SLOT(display(int)));
+   //QObject::connect(dialMemorySize,    SIGNAL(valueChanged(int)),  lcdTagFieldSize,     SLOT(display(int)));
+
    QObject::connect(quit,              SIGNAL(clicked()),          qApp,                SLOT(quit()));  // apply quit function to quit button
 
    // Widget Layouts
