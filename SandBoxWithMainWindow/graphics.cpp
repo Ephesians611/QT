@@ -94,21 +94,6 @@ void Graphics::paintGL()
    glScalef(0.5, 0.5, 1);
    polygon(5);
 
-   // circle
-   glLoadIdentity();
-   glColor3f(1, 0.39, 0);
-   glTranslatef(0.3, -0.5, 0);
-   glScalef(0.5, 0.5, 1);
-   polygon(100);
-
-//   // elipse
-   glLoadIdentity();
-   glColor3f(0.68, 0.14, 0.86);
-   glTranslatef(-.3, -0.5, 0);
-   glRotatef(-45.0, 0, 0, 1);
-   glScalef(0.25, 0.5, 1);
-   polygon(100);
-
    // cube
    glLoadIdentity();
    glTranslatef(0, 0, 0);
