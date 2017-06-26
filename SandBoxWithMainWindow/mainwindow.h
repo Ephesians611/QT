@@ -1,4 +1,4 @@
-// Assignment I2
+// Assignment I3
 // Johnny Sloans
 
 #ifndef MAINWINDOW_H
@@ -29,12 +29,15 @@ namespace Ui {
 class MainWindow;
 }
 
+class Graphics;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    Graphics *graphics;
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow();
     ~MainWindow();
 
 private slots:

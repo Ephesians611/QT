@@ -1,10 +1,6 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-06-21T10:03:24
-#
-#-------------------------------------------------
+QT += core gui opengl
 
-QT       += core gui
+LIBS += -lOpengl32
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +9,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    graphics.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    graphics.h
 
-FORMS    += mainwindow.ui
+

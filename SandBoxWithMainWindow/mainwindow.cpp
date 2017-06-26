@@ -1,36 +1,37 @@
-// Assignment I2
+// Assignment I3
 // Johnny Sloans
 
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "graphics.h"
 #include <math.h>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow()
 {
     a = 0;
     b = 0;
     c = 0;
 
-    ui->setupUi(this);
-
     QWidget *window = new QWidget;
     setCentralWidget(window);
 
     editor = new QTextEdit();
+    graphics = new Graphics;
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(10);
 
-    createControls();	// creates the widget from assignment I1.
+    createControls();	// creates the widgets from assignment I1.
     // The name of the widget will be: dockCentralWidget
 
     QDockWidget  *dock = new QDockWidget();
     dock->setWidget(dockCentralWidget);
 
+    QDockWidget  *graphicsDock = new QDockWidget();
+    graphicsDock->setWidget(graphics);
+
     layout->addWidget(dock);
     layout->addWidget(editor);
+    layout->addWidget(graphicsDock);
 
     window->setLayout(layout);
 
@@ -67,14 +68,11 @@ void MainWindow::open()
 
     if (file.open(QIODevice::ReadOnly) && outputFile.open(QIODevice::ReadWrite))
     {
-        QTextStream in(&file);
         QTextStream out(&outputFile);
-
         while (!file.atEnd())
         {
             out << "0x" + file.readLine() << endl;
         }
-
         file.close();
         outputFile.close();
     }
@@ -238,14 +236,14 @@ void MainWindow::createControls()
     QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdNumSets,          SLOT(display(int)));
     QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,          SLOT(display(int)));
     QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock, SLOT(display(int)));
-    QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
+    QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   lcdMemorySize,       SLOT(display(int)));
 
-    QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   this,   SLOT(getReferenceWordValue(int)));
-    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),   this,   SLOT(getOffsetFieldValue(int)));
-    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),   this,   SLOT(getIndexFieldValue(int)));
-    QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   this,   SLOT(getTagFieldValue(int)));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getReferenceWordValue(int)));
+    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(getOffsetFieldValue(int)));
+    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(getIndexFieldValue(int)));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getTagFieldValue(int)));
 
-    QObject::connect(quit,              SIGNAL(clicked()),          qApp,                SLOT(quit()));  // apply quit function to quit button
+    QObject::connect(quit,              SIGNAL(clicked()),          qApp,   SLOT(quit()));  // apply quit function to quit button
 
     // Widget Layouts
     //
@@ -260,18 +258,18 @@ void MainWindow::createControls()
     vloutSimulationInput->addWidget(rdoInstruction);
     vloutSimulationInput->addWidget(rdoData);
 
-    grdloutSimulationInput->addWidget(lblSets,               0, 0, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(hsSets,                1, 0, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lcdNumSets,            2, 0, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lblWays,               0, 1, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(spnWays,               1, 1, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lcdNumWays,            2, 1, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lblBytesPerBlock,      0, 2, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(dialBytesPerBlock,     1, 2, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,   2, 2, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lblMemorySize,         0, 3, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lblSets,              0, 0, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(hsSets,               1, 0, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdNumSets,           2, 0, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lblWays,              0, 1, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(spnWays,              1, 1, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdNumWays,           2, 1, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lblBytesPerBlock,     0, 2, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(dialBytesPerBlock,    1, 2, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdNumBytesPerBlock,  2, 2, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lblMemorySize,        0, 3, Qt::AlignCenter);
     grdloutSimulationInput->addWidget(spnMemorySize,        1, 3, Qt::AlignCenter);
-    grdloutSimulationInput->addWidget(lcdMemorySize,         2, 3, Qt::AlignCenter);
+    grdloutSimulationInput->addWidget(lcdMemorySize,        2, 3, Qt::AlignCenter);
 
     hloutSimulationInput->addLayout(vloutSimulationInput);
     hloutSimulationInput->addLayout(grdloutSimulationInput);
@@ -284,6 +282,7 @@ void MainWindow::createControls()
     grdloutSimulationControl->addWidget(spnNumSteps,    1, 1);
     grdloutSimulationControl->addWidget(btnRunUntil,    0, 2);
     grdloutSimulationControl->addWidget(spnBreakAt,     1, 2);
+
     grpSimulationControls->setLayout(grdloutSimulationControl);
 
     // Child Simulation Output Controls Layout
@@ -313,9 +312,6 @@ void MainWindow::createControls()
     loutMain->addWidget(grpSimulationOutputControls);
     loutMain->addWidget(quit, Qt::AlignCenter);
     loutMain->setAlignment(quit, Qt::AlignHCenter); 	// to align center the quit button horizontally
-
-    // Parent Window Layout
-    //window->setLayout(loutMain);
 
     dockCentralWidget->setLayout(loutMain);
     dockCentralWidget->setFixedWidth(560);
