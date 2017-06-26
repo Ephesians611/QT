@@ -28,9 +28,11 @@ MainWindow::MainWindow()
 
     QDockWidget  *graphicsDock = new QDockWidget();
     graphicsDock->setWidget(graphics);
+    graphicsDock->setFixedWidth(400);
+    graphicsDock->setFixedHeight(400);
 
     layout->addWidget(dock);
-    layout->addWidget(editor);
+    //layout->addWidget(editor);
     layout->addWidget(graphicsDock);
 
     window->setLayout(layout);
@@ -38,9 +40,9 @@ MainWindow::MainWindow()
     createActions();	// sets the actions for menu (open, help and exit)
     createMenus();
 
-    setWindowTitle(tr("Johnny Sloans Assignment I2"));
-    setMinimumSize(360, 360);
-    resize(700, 640);
+    setWindowTitle(tr("Johnny Sloans Assignment I3"));
+    setMinimumSize(460, 360);
+    resize(1100, 640);
 }
 
 MainWindow::~MainWindow()
@@ -306,7 +308,7 @@ void MainWindow::createControls()
     grpSimulationOutputControls->setLayout(grdloutSimulationOutput);
 
     // Organize Child Layouts
-    loutMain->addWidget(grpSimulationTraceFileInput);
+    //loutMain->addWidget(grpSimulationTraceFileInput);
     loutMain->addWidget(grpSimulationInputControls);
     loutMain->addWidget(grpSimulationControls);
     loutMain->addWidget(grpSimulationOutputControls);
