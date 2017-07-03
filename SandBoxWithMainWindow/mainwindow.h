@@ -42,6 +42,7 @@ public:
     explicit MainWindow();
     ~MainWindow();
 
+
 private slots:
     void open();
     void help();
@@ -50,10 +51,9 @@ private slots:
     void getIndexFieldValue(int);
     void getTagFieldValue(int);
 
-
 private:
     Ui::MainWindow *ui;
-    int a, b, c;
+    int a, b, c, d;
     void createActions();
     void createMenus();
     void createControls();

@@ -5,7 +5,9 @@
 
 #include <QtOpenGL>
 #include <math.h>
+#include "graphics.h"
 #include "graphics4.h"
+#include "mainwindow.h"
 
 Graphics4::Graphics4(QWidget *parent)
    : QGLWidget(parent)
@@ -37,9 +39,9 @@ void Graphics4::resizeGL(int w, int h)
 }
 
 //Paints the GL scene
-void Graphics4::paintGL()
+void Graphics4::paintGL(int a, int b, int c, int d)
 {
-    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+   QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
    f->glClear (GL_COLOR_BUFFER_BIT);
    f->glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -48,17 +50,22 @@ void Graphics4::paintGL()
    glColor3f(1, 0.98, 0);
    glPointSize(4);
 
-   int n = info[0].toInt();
+   //int n = info[0].toInt();
+   int n = d;
    if (n != 0)
    {
-       GLfloat stepX = 1.6 / (n-1);
-       GLfloat stepY = 1.5 / (info[1].toInt()-1);
+       //GLfloat stepX = 1.6 / (n-1);
+       GLfloat stepX = 0.1;
+       //GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2));
+
+
 
        glTranslatef(0, 0.5, 0);
 
        for (int i = 0; i < n; i++)
        {
-           point(-0.8 + stepX * i, -1.3 + numbers[i].toInt() * stepY);
+           //point(-0.8 + stepX * i, -1.3 + numbers[i].toInt() * stepY);
+           point(0.1 + stepX, (a + (b*stepX) + pow(c*stepX,2)));
        }
    }
 

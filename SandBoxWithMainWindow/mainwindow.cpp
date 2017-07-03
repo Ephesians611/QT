@@ -17,7 +17,7 @@ MainWindow::MainWindow()
 
     editor = new QTextEdit();
     graphics = new Graphics;
-    graphics4 = new Graphics4;
+    graphics4 = new Graphics4;  // plots the function y=𝐴+𝐵𝑥+𝐶𝑥2 for the values 0≤𝑥≤𝑇,
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(10);
@@ -113,7 +113,8 @@ void MainWindow::getIndexFieldValue(int numberSets)
 
 void MainWindow::getTagFieldValue(int)
 {
-    lcdTagFieldSize->display(a-b-c);
+    d = a-b-c;
+    lcdTagFieldSize->display(d);
 }
 
 void MainWindow::createActions()

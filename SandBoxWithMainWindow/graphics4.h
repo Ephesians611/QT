@@ -7,6 +7,7 @@
 #include <QGLWidget>
 #include <gl/GLU.h>
 #include <gl/GL.h>
+#include "mainwindow.h"
 /* initial triangle */
 
 
@@ -22,7 +23,7 @@ public:
 
 protected:
    void initializeGL();
-   void paintGL();
+   void paintGL(int a, int b, int c, int d);
    void resizeGL(int w, int h);
 
    void point(GLfloat, GLfloat);
