@@ -95,22 +95,30 @@ void MainWindow::getReferenceWordValue(int memorySize)
 {
     a = ceil(log2(memorySize));
     lcdReferenceWordSize->display(a);
+    graphics4->a = a;
+    graphics4->updateGL();
 }
 void MainWindow::getOffsetFieldValue(int bytesPerBlock)
 {
     b = ceil(log2(bytesPerBlock));
     lcdOffsetFieldSize->display(b);
+    graphics4->b = b;
+    graphics4->updateGL();
 }
 void MainWindow::getIndexFieldValue(int numberSets)
 {
     c = ceil(log2(numberSets));
     lcdIndexFieldSize->display(c);
+    graphics4->c = c;
+    graphics4->updateGL();
 }
 
 void MainWindow::getTagFieldValue(int)
 {
     d = a-b-c;
     lcdTagFieldSize->display(d);
+    graphics4->d = d;
+    graphics4->updateGL();
 }
 
 //Event slot when a value affecting the sceene is changed
@@ -262,10 +270,10 @@ void MainWindow::createControls()
     QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(getIndexFieldValue(int)));
     QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getTagFieldValue(int)));
 
-    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
-    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
-    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
-    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+//    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+//    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+//    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+//    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
 
     QObject::connect(quit,              SIGNAL(clicked()),          qApp,   SLOT(quit()));  // apply quit function to quit button
 

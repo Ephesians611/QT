@@ -12,10 +12,7 @@
 Graphics4::Graphics4(QWidget *parent)
    : QGLWidget(parent)
 {
-   a = 0;
-   b = 0;
-   c = 0;
-   d = 0;
+
 }
 
 Graphics4::~Graphics4()
@@ -53,15 +50,13 @@ void Graphics4::paintGL()
    glColor3f(1, 1, 1);
    glPointSize(4);
 
-   //int n = info[0].toInt();
-   //int n = d;
-   int n = 5;
+   int n = d;
    if (n != 0)
    {
        //GLfloat stepX = 1.6 / (n-1);
        GLfloat stepX = 0.1;
+       //GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2))
        GLfloat stepY = 0.3;
-
 
 
        glTranslatef(0, 0.5, 0);
@@ -71,7 +66,6 @@ void Graphics4::paintGL()
        {
            stepX += 0.1;
            //point(-0.8 + stepX * i, -1.3 + numbers[i].toInt() * stepY);
-           //point(stepX, (a + (b*stepX) + pow(c*stepX,2)));
            point(stepX, stepY);
        }
    }
