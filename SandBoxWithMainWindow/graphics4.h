@@ -20,10 +20,11 @@ public:
    ~Graphics4();
    QStringList info;
    QStringList numbers;
+   int a, b, c, d;
 
 protected:
    void initializeGL();
-   void paintGL(int a, int b, int c, int d);
+   void paintGL();
    void resizeGL(int w, int h);
 
    void point(GLfloat, GLfloat);

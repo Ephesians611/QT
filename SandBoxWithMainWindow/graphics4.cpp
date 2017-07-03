@@ -14,6 +14,10 @@ Graphics4::Graphics4(QWidget *parent)
 {
    info << "0" << "0";
    numbers << "";
+   a = 0;
+   b = 0;
+   c = 0;
+   d = 0;
 }
 
 Graphics4::~Graphics4()
@@ -39,7 +43,7 @@ void Graphics4::resizeGL(int w, int h)
 }
 
 //Paints the GL scene
-void Graphics4::paintGL(int a, int b, int c, int d)
+void Graphics4::paintGL()
 {
    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
    f->glClear (GL_COLOR_BUFFER_BIT);

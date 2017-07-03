@@ -50,6 +50,7 @@ private slots:
     void getOffsetFieldValue(int);
     void getIndexFieldValue(int);
     void getTagFieldValue(int);
+    void changePlot();
 
 private:
     Ui::MainWindow *ui;

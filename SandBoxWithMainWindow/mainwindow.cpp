@@ -11,6 +11,7 @@ MainWindow::MainWindow()
     a = 0;
     b = 0;
     c = 0;
+    d = 0;
 
     QWidget *window = new QWidget;
     setCentralWidget(window);
@@ -115,6 +116,18 @@ void MainWindow::getTagFieldValue(int)
 {
     d = a-b-c;
     lcdTagFieldSize->display(d);
+}
+
+//Event slot when a value affecting the sceene is changed
+//Updates the gl object with the new sceene
+void MainWindow::changePlot()
+{
+    graphics4->a = a;
+    graphics4->b = b;
+    graphics4->c = c;
+    graphics4->d = d;
+
+    graphics4->updateGL();
 }
 
 void MainWindow::createActions()
@@ -253,6 +266,11 @@ void MainWindow::createControls()
     QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(getOffsetFieldValue(int)));
     QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(getIndexFieldValue(int)));
     QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getTagFieldValue(int)));
+
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
+    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
+    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
 
     QObject::connect(quit,              SIGNAL(clicked()),          qApp,   SLOT(quit()));  // apply quit function to quit button
 
