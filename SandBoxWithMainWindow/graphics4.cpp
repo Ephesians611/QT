@@ -7,13 +7,11 @@
 #include <math.h>
 #include "graphics.h"
 #include "graphics4.h"
-#include "mainwindow.h"
+
 
 Graphics4::Graphics4(QWidget *parent)
    : QGLWidget(parent)
 {
-   info << "0" << "0";
-   numbers << "";
    a = 0;
    b = 0;
    c = 0;
@@ -51,25 +49,30 @@ void Graphics4::paintGL()
 
    // point
    glLoadIdentity();
-   glColor3f(1, 0.98, 0);
+   //glColor3f(1, 0.98, 0);
+   glColor3f(1, 1, 1);
    glPointSize(4);
 
    //int n = info[0].toInt();
-   int n = d;
+   //int n = d;
+   int n = 5;
    if (n != 0)
    {
        //GLfloat stepX = 1.6 / (n-1);
        GLfloat stepX = 0.1;
-       //GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2));
+       GLfloat stepY = 0.3;
 
 
 
        glTranslatef(0, 0.5, 0);
+       //glTranslatef(0.2, 0.5, 0);
 
        for (int i = 0; i < n; i++)
        {
+           stepX += 0.1;
            //point(-0.8 + stepX * i, -1.3 + numbers[i].toInt() * stepY);
-           point(0.1 + stepX, (a + (b*stepX) + pow(c*stepX,2)));
+           //point(stepX, (a + (b*stepX) + pow(c*stepX,2)));
+           point(stepX, stepY);
        }
    }
 
@@ -79,7 +82,7 @@ void Graphics4::paintGL()
 
 //Function to draw a single point
 void Graphics4::point(GLfloat x, GLfloat y){
-   glBegin(GL_POINTS);
+  glBegin(GL_POINTS);
        glVertex3f(x, y, 0);
    glEnd();
 }

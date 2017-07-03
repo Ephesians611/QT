@@ -8,16 +8,11 @@
 
 MainWindow::MainWindow()
 {
-    a = 0;
-    b = 0;
-    c = 0;
-    d = 0;
-
     QWidget *window = new QWidget;
     setCentralWidget(window);
 
     editor = new QTextEdit();
-    graphics = new Graphics;
+    graphics1 = new Graphics;
     graphics4 = new Graphics4;  // plots the function y=𝐴+𝐵𝑥+𝐶𝑥2 for the values 0≤𝑥≤𝑇,
 
     QHBoxLayout *layout = new QHBoxLayout;
@@ -30,15 +25,15 @@ MainWindow::MainWindow()
     dock->setWidget(dockCentralWidget);
 
     QGridLayout *graphicsGrid = new QGridLayout();
-    graphicsGrid->addWidget(graphics, 0, 0);
+    graphicsGrid->addWidget(graphics1, 0, 0);
     graphicsGrid->addWidget(graphics4, 0, 1);
 
     QDockWidget  *graphicsDock = new QDockWidget();
     QWidget *graphics = new QWidget;
     graphics->setLayout(graphicsGrid);
     graphicsDock->setWidget(graphics);
-    graphicsDock->setFixedWidth(400);
-    graphicsDock->setFixedHeight(400);
+    //graphicsDock->setFixedWidth(400);
+    //graphicsDock->setFixedHeight(400);
 
     layout->addWidget(dock);
     //layout->addWidget(editor);
@@ -49,14 +44,14 @@ MainWindow::MainWindow()
     createActions();	// sets the actions for menu (open, help and exit)
     createMenus();
 
-    setWindowTitle(tr("Johnny Sloans Assignment I3"));
+    setWindowTitle(tr("Johnny Sloans Assignment I4"));
     setMinimumSize(460, 360);
     resize(1100, 640);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    //delete ui;
 }
 
 // opens the file and put its content into the text editor
@@ -260,17 +255,17 @@ void MainWindow::createControls()
     QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  lcdNumSets,          SLOT(display(int)));
     QObject::connect(spnWays,           SIGNAL(valueChanged(int)),  lcdNumWays,          SLOT(display(int)));
     QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  lcdNumBytesPerBlock, SLOT(display(int)));
-    QObject::connect(spnMemorySize,    SIGNAL(valueChanged(int)),   lcdMemorySize,       SLOT(display(int)));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  lcdMemorySize,       SLOT(display(int)));
 
     QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getReferenceWordValue(int)));
     QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(getOffsetFieldValue(int)));
     QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(getIndexFieldValue(int)));
     QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(getTagFieldValue(int)));
 
-    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
-    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
-    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
-    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot(int)));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+    QObject::connect(dialBytesPerBlock, SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+    QObject::connect(hsSets,            SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
+    QObject::connect(spnMemorySize,     SIGNAL(valueChanged(int)),  this,   SLOT(changePlot()));
 
     QObject::connect(quit,              SIGNAL(clicked()),          qApp,   SLOT(quit()));  // apply quit function to quit button
 

@@ -35,7 +35,7 @@ class Graphics4;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    Graphics *graphics;
+    Graphics *graphics1;
     Graphics4 *graphics4;
 
 public:

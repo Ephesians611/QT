@@ -7,7 +7,7 @@
 #include <QGLWidget>
 #include <gl/GLU.h>
 #include <gl/GL.h>
-#include "mainwindow.h"
+
 /* initial triangle */
 
 
@@ -18,8 +18,6 @@ class Graphics4 : public QGLWidget
 public:
    Graphics4(QWidget *parent = 0);
    ~Graphics4();
-   QStringList info;
-   QStringList numbers;
    int a, b, c, d;
 
 protected:
