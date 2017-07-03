@@ -3,7 +3,6 @@
 
 #include "mainwindow.h"
 #include "graphics.h"
-#include "graphics4.h"
 #include <math.h>
 
 MainWindow::MainWindow()
@@ -17,7 +16,6 @@ MainWindow::MainWindow()
 
     editor = new QTextEdit();
     graphics = new Graphics;
-    graphics4 = new Graphics4;
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(10);
@@ -28,13 +26,7 @@ MainWindow::MainWindow()
     QDockWidget  *dock = new QDockWidget();
     dock->setWidget(dockCentralWidget);
 
-    QGridLayout *graphicsGrid = new QGridLayout();
-    graphicsGrid->addWidget(graphics, 0, 0);
-    graphicsGrid->addWidget(graphics4, 0, 1);
-
     QDockWidget  *graphicsDock = new QDockWidget();
-    QWidget *graphics = new QWidget;
-    graphics->setLayout(graphicsGrid);
     graphicsDock->setWidget(graphics);
     graphicsDock->setFixedWidth(400);
     graphicsDock->setFixedHeight(400);

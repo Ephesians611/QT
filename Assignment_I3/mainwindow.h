@@ -30,13 +30,11 @@ class MainWindow;
 }
 
 class Graphics;
-class Graphics4;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
     Graphics *graphics;
-    Graphics4 *graphics4;
 
 public:
     explicit MainWindow();
