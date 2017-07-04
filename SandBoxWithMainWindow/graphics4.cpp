@@ -24,7 +24,7 @@ void Graphics4::initializeGL()
 {
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(-20.0, 20.0, -30.0, 70.0);
+   gluOrtho2D(-20.0, 20.0, -30.0, 50.0);
    glMatrixMode(GL_MODELVIEW);
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }

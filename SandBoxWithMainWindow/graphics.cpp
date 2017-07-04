@@ -1,5 +1,5 @@
 // graphics.cpp
-// Assignment I3
+// Assignment I4
 // Johnny Sloans
 
 #include <QtOpenGL>
