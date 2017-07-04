@@ -24,7 +24,8 @@ void Graphics4::initializeGL()
 {
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   //gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+   gluOrtho2D(-50.0, 50.0, -50.0, 50.0);
    glMatrixMode(GL_MODELVIEW);
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
@@ -55,8 +56,8 @@ void Graphics4::paintGL()
    {
        //GLfloat stepX = 1.6 / (n-1);
        GLfloat stepX = 0.1;
-       //GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2))
-       GLfloat stepY = 0.3;
+       GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2));
+       //GLfloat stepY = 0.3;
 
 
        glTranslatef(0, 0.5, 0);
@@ -65,7 +66,9 @@ void Graphics4::paintGL()
        for (int i = 0; i < n; i++)
        {
            stepX += 0.1;
-           //point(-0.8 + stepX * i, -1.3 + numbers[i].toInt() * stepY);
+           //stepX += 5.0;
+           stepY = (a + (b*stepX) + pow(c*stepX,2));
+           //point(stepX, -1.3 + numbers[i].toInt() * stepY);
            point(stepX, stepY);
        }
    }
@@ -77,7 +80,7 @@ void Graphics4::paintGL()
 //Function to draw a single point
 void Graphics4::point(GLfloat x, GLfloat y){
   glBegin(GL_POINTS);
-       glVertex3f(x, y, 0);
+     glVertex3f(x, y, 0);
    glEnd();
 }
 
