@@ -54,21 +54,14 @@ void Graphics4::paintGL()
    int n = d;
    if (n != 0)
    {
-       //GLfloat stepX = 1.6 / (n-1);
-       GLfloat stepX = 0.1;
-       GLfloat stepY = (a + (b*stepX) + pow(c*stepX,2));
-       //GLfloat stepY = 0.3;
-
+       GLfloat stepX, stepY;
 
        glTranslatef(0, 0.5, 0);
-       //glTranslatef(0.2, 0.5, 0);
 
        for (int i = 0; i < n; i++)
        {
            stepX += 0.1;
-           //stepX += 5.0;
            stepY = (a + (b*stepX) + pow(c*stepX,2));
-           //point(stepX, -1.3 + numbers[i].toInt() * stepY);
            point(stepX, stepY);
        }
    }
