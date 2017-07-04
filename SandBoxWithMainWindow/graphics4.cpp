@@ -24,8 +24,7 @@ void Graphics4::initializeGL()
 {
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   //gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
-   gluOrtho2D(-50.0, 50.0, -50.0, 50.0);
+   gluOrtho2D(-20.0, 20.0, -30.0, 70.0);
    glMatrixMode(GL_MODELVIEW);
    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
@@ -47,7 +46,6 @@ void Graphics4::paintGL()
 
    // point
    glLoadIdentity();
-   //glColor3f(1, 0.98, 0);
    glColor3f(1, 1, 1);
    glPointSize(4);
 
